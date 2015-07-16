@@ -2,8 +2,8 @@ package com.dotuian.springmvc.web.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.avalon.framework.parameters.ParameterException;
 import org.apache.log4j.Logger;
+import org.apache.avalon.framework.parameters.ParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -19,25 +19,25 @@ public class BaseController {
 	 * @param exception
 	 * @return
 	 */
-//	@ExceptionHandler(Exception.class)
-//	public ModelAndView handleError(HttpServletRequest request, Exception exception) {
-//
-//		logger.error("基于注解@ExceptionHandler异常处理  --->>> Request: " + request.getRequestURL() + " raised " + exception);
-//		
-//		ModelAndView mv = new ModelAndView();
-//		mv.addObject("exception", exception);
-//		mv.addObject("url", request.getRequestURL());
-//
-//		// 根据不同错误转向不同页面
-//		if (exception instanceof NullPointerException) {
-//			mv.setViewName("/errors/exception");
-//		} else if (exception instanceof ParameterException) {
-//			mv.setViewName("/errors/exception");
-//		} else {
-//			mv.setViewName("/errors/exception");
-//		}
-//		
-//		return mv;
-//	}
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleError(HttpServletRequest request, Exception exception) {
+
+		logger.error("基于注解@ExceptionHandler异常处理  --->>> Request: " + request.getRequestURL() + " raised " + exception);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("exception", exception);
+		mv.addObject("url", request.getRequestURL());
+
+		// 根据不同错误转向不同页面
+		if (exception instanceof NullPointerException) {
+			mv.setViewName("/errors/exception");
+		} else if (exception instanceof ParameterException) {
+			mv.setViewName("/errors/exception");
+		} else {
+			mv.setViewName("/errors/exception");
+		}
+		
+		return mv;
+	}
 
 }

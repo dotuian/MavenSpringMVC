@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class HelloController extends BaseController{
+public class HelloController extends BaseController {
 	
 	@RequestMapping(value = "/hello/index", method = RequestMethod.GET)
 	public String index(ModelMap model) {
