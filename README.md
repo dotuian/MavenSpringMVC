@@ -12,6 +12,7 @@
 
 + 将项目导入到Eclipse中
 
-+ 在项目属性设置中将 **Java Build Path**, ** Java Complier **, ** Project Facets **中JDK的版本调整为1.8
++ 在项目属性设置中将 **Java Build Path**, **Java Complier** JDK的版本调整为1.8
++ 将**Project Facets **中**Java**也调整为1.8，**Dynamic Web module**的版本调整为3.0于web.xml中一致
 
  
