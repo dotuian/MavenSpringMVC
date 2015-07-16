@@ -4,9 +4,11 @@
 
 ## 项目导入过程
 + 下载源代码
+
 ` $ git clone https://github.com/dotuian/MavenSpringMVC.git MavenSpringMVC ` 
 
 + 将源码文件装换成Eclipse项目
+
 ` $ mvn eclipse:eclipse -Dwtpversion=2.0' ` 
 > Please remember that adding “-Dwtpversion=2.0″ is necessary, otherwise using only “mvn eclipse:eclipse” will convert it to only normal java application, and you will not be able to run it as other eclipse web applications.
 
