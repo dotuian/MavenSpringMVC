@@ -1,0 +1,2 @@
+# MavenSpringMVC
+基于Maven包管理的，SpringMVC框架搭建的web学习项目
