@@ -14,7 +14,7 @@
 
 + 将项目导入到Eclipse中，然后调整项目属性
 
-> + 将 **Java Build Path** -- **Libraries** 中JDK的版本调整为`1.8`
-  + 将 **Java Complier** -- **Complier compliance level** 修改为 `1.8`
-  + 将**Project Facets** 中 **Java** 也调整为`1.8`， **Dynamic Web module** 的版本调整为`3.0`与web.xml中一致
-  + 将 **Resource** 中 **Text file encoding** 修改为  `UTF-8`
+>1. 将**Java Build Path** -- **Libraries** 中JDK的版本调整为`1.8`
+2. 将 **Java Complier** -- **Complier compliance level** 修改为 `1.8`
+3. 将**Project Facets** 中 **Java** 也调整为`1.8`， **Dynamic Web module** 的版本调整为`3.0`与web.xml中一致
+4. 将 **Resource** 中 **Text file encoding** 修改为  `UTF-8`
