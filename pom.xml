@@ -12,11 +12,11 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
-		
+
 		<spring.version>3.1.1.RELEASE</spring.version>
-		
+
 		<jstl.version>1.2</jstl.version>
-		
+
 		<junit.version>3.8.1</junit.version>
 	</properties>
 
@@ -28,7 +28,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-asm</artifactId>
@@ -36,7 +36,7 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
@@ -165,20 +165,6 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.10</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<downloadJavadocs>true</downloadJavadocs>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
-			</plugin>
-			
-			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
@@ -186,20 +172,8 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-				<configuration>
-					<url>http://localhost:8080/manager</url>
-					<server>localhost</server>
-					<path>/${project.build.finalName}</path>
-				</configuration>
-			</plugin>
 
 		</plugins>
-
 
 	</build>
 </project>
