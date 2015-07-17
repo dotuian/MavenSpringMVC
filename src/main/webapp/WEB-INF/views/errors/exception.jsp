@@ -21,14 +21,16 @@
 <div class="container">
 
 	<div class="row">
-		<div class="col-md-4">
+		<div class="col-lg-12">
 		    <h1>Error Page</h1>
-		    <p>Application has encountered an error. Please contact support on ...</p>
-			<p>Failed URL : ${url}</p>
-			<p>Exception: ${exception.message}</p>
+			<p>Failed URL : <code>${url}</code></p>
+			<p>Exception: <code>${exception.message}</code></p>
+			
+			<div class="highlight">
 			<c:forEach items="${exception.stackTrace}" var="ste">
 				${ste} 
     		</c:forEach>
+    		</div>
 		</div>
 	</div>
 

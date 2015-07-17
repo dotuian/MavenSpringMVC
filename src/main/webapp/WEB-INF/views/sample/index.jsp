@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Maven + Spring MVC</title>
+<title>Maven + Spring MVC Sample</title>
 
 <spring:url value="/resources/css/site.css" var="coreCss" />
-<spring:url value="/resources/css/bootstrap.min.css"
-	var="bootstrapCss" />
+<spring:url value="/resources/css/bootstrap.min.css" var="bootstrapCss" />
+
 <link href="${bootstrapCss}" rel="stylesheet" />
 <link href="${coreCss}" rel="stylesheet" />
 </head>
@@ -26,44 +26,36 @@
 	<div class="container">
 		<h1>${title}</h1>
 		<p>
-			<c:if test="${not empty name}">
-			Hello ${name}
-		</c:if>
+			<c:if test="${not empty username}">
+				Hello ${username}
+			</c:if>
 
-			<c:if test="${empty name}">
-			Welcome Welcome!
-		</c:if>
+			<c:if test="${empty username}">Welcome!</c:if>
 		</p>
 		<p>
-			<a class="btn btn-primary btn-lg" href="#" role="button">Learn
-				more</a>
+			${user.userid} | ${user.username} | ${user.age} | ${user.sex}
 		</p>
 	</div>
 </div>
 
 <div class="container">
 
+	<c:out value="${attributeName}"></c:out>
+
 	<div class="row">
 		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
+			<h2>字符数组</h2>
+			<c:forEach items="${stringList}" var="stringVar">
+				${string} 
+    		</c:forEach>
+
 		</div>
 		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
-		</div>
-		<div class="col-md-4">
-			<h2>Heading</h2>
-			<p>ABC</p>
-			<p>
-				<a class="btn btn-default" href="#" role="button">View details</a>
-			</p>
+			<h2>整数数组</h2>
+			<c:forEach items="${intArray}" var="intVar">
+				${intVar} 
+    		</c:forEach>
+
 		</div>
 	</div>
 
@@ -76,10 +68,9 @@
 <spring:url value="/resources/js/function.js" var="coreJs" />
 <spring:url value="/resources/js/bootstrap.min.js" var="bootstrapJs" />
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${coreJs}"></script>
 <script src="${bootstrapJs}"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 </body>
 </html>
