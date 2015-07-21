@@ -15,10 +15,19 @@
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
 	<context:component-scan base-package="com.dotuian.springmvc" />
-	<mvc:annotation-driven />
+		
+	<mvc:annotation-driven>
+		<!--  让输入的Json字符串格式化 -->
+		<mvc:message-converters>
+			<bean id="jacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="prettyPrint" value="true" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	
+	<!-- 视图解析器  -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix">
 			<value>/WEB-INF/views/</value>
 		</property>
@@ -27,7 +36,7 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-
+	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
 
 
@@ -62,18 +71,5 @@
 	<bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/>
 
 
-	
-	<bean id="jacksonMessageConverter"
-		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"></bean>
-	<bean
-		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
-		<property name="messageConverters">
-			<list>
-				<ref bean="jacksonMessageConverter" />
-			</list>
-		</property>
-	</bean>
-
-	
 
 </beans>

@@ -18,3 +18,7 @@
 2. 将 **Java Complier** -- **Complier compliance level** 修改为 `1.8`
 3. 将**Project Facets** 中 **Java** 也调整为`1.8`， **Dynamic Web module** 的版本调整为`3.0`与web.xml中一致
 4. 将 **Resource** 中 **Text file encoding** 修改为  `UTF-8`
+
++ 选择项目，右键 -- Configure → Convert to Maven project 
+
+

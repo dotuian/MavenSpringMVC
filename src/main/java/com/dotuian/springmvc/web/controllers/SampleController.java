@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dotuian.springmvc.dto.XmlUser;
+import com.dotuian.springmvc.dto.XmlUserList;
 import com.dotuian.springmvc.service.SampleService;
 import com.dotuian.springmvc.web.forms.User;
 
@@ -209,8 +211,7 @@ public class SampleController extends BaseController {
 	
 	@RequestMapping(value = "list")
 	@ResponseBody
-	public List<Long> list() {
-
+	public List<String> list() {
 		return sampleService.getStringList();
 	}
 
@@ -222,20 +223,55 @@ public class SampleController extends BaseController {
 	}
 	
 	
+	// 返回Json字符串
 	// =============== JSON ===============
-	@RequestMapping(value = "user/{id}", method = RequestMethod.GET)
+	/**
+	 * http://127.0.0.1:8080/springmvc/sample/json/user/1.json
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/json/user/{id}.json", method = RequestMethod.GET)
 	@ResponseBody
 	public User getUser(@PathVariable int id) {
 		User user = sampleService.getUserById(id);
 		return user;
 	}
 
-	@RequestMapping(value = "users", method = RequestMethod.GET)
+	/**
+	 * http://127.0.0.1:8080/springmvc/sample/json/users.json
+	 * @return
+	 */
+	@RequestMapping(value = "/json/users.json", method = RequestMethod.GET)
 	@ResponseBody
 	public List<User> getAllUsers() {
 		List<User> users = sampleService.getAllUsers();
 		return users;
 	}
-	 
-
+	
+	// 返回XML字符串
+	// =============== XML ===============
+	/**
+	 * http://127.0.0.1:8080/springmvc/sample/xml/user/{id}.xml
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value = "/xml/user/{id}.xml", method = RequestMethod.GET)
+	@ResponseBody
+	public XmlUser getXmlUser(@PathVariable int id) {
+		XmlUser user = sampleService.getXmlUserById(id);
+		return user;
+	}
+	
+	/**
+	 * 
+	 * http://127.0.0.1:8080/springmvc/sample/xml/users.xml
+	 * @return
+	 */
+	@RequestMapping(value = "/xml/users.xml", method = RequestMethod.GET)
+	@ResponseBody
+	public XmlUserList getAllXmlUsers() {
+		List<XmlUser> users = sampleService.getAllXmlUsers();
+		return new XmlUserList(users);
+	}
+	
 }
