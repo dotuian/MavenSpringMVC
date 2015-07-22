@@ -1,12 +1,19 @@
 package com.dotuian.springmvc.web.controllers;
 
+import java.net.URLDecoder;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,10 +23,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.dotuian.springmvc.common.interceptors.AuthInterceptor;
+import com.dotuian.springmvc.common.interceptors.AuthPassport;
 import com.dotuian.springmvc.dto.XmlUser;
 import com.dotuian.springmvc.dto.XmlUserList;
 import com.dotuian.springmvc.service.SampleService;
+import com.dotuian.springmvc.web.forms.LoginForm;
 import com.dotuian.springmvc.web.forms.User;
+import com.dotuian.springmvc.web.validators.LoginFormValidator;
 
 
 /**
@@ -33,9 +44,7 @@ import com.dotuian.springmvc.web.forms.User;
  * 
  * 
  */
-
-
-
+@AuthPassport
 @Controller
 @RequestMapping(value = "/sample")
 public class SampleController extends BaseController {
@@ -44,6 +53,7 @@ public class SampleController extends BaseController {
 	@Autowired
 	private SampleService sampleService;
 
+	
 	/**
 	 *  在方法级别使用 @RequestMapping 来限定请求处理的时候，可以指定两个属性
 	 * 1. method 属性 : 
@@ -267,6 +277,7 @@ public class SampleController extends BaseController {
 	 * http://127.0.0.1:8080/springmvc/sample/xml/users.xml
 	 * @return
 	 */
+	@AuthPassport
 	@RequestMapping(value = "/xml/users.xml", method = RequestMethod.GET)
 	@ResponseBody
 	public XmlUserList getAllXmlUsers() {

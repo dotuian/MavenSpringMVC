@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dotuian.springmvc.web.controllers.HelloController;
+import com.dotuian.springmvc.web.controllers.SiteController;
 
 /**
  * http://www.mincoder.com/article/2500.shtml
@@ -40,7 +40,7 @@ import com.dotuian.springmvc.web.controllers.HelloController;
  */
 public class MyExceptionHandler implements HandlerExceptionResolver {
 
-	protected Logger logger = Logger.getLogger(HelloController.class);
+	protected Logger logger = Logger.getLogger(SiteController.class);
 	
 	/**
 	 * 第4个参数Exception exception : 表示对哪种类型的异常进行处理，如果想同时对多种异常进行处理，可以把它换成一个异常数组。

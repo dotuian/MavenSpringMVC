@@ -25,19 +25,41 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	
-	<!-- 视图解析器  -->
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix">
-			<value>/WEB-INF/views/</value>
-		</property>
+<!-- 
+	<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">  
+        <property name="prefix" value="/WEB-INF/views/" />  
+        <property name="suffix" value=".html" />  
+        <property name="templateMode" value="HTML5" />  
+        <property name="cacheable" value="false" />  
+        <property name="characterEncoding" value="UTF-8"/>  
+    </bean>  
 
-		<property name="suffix">
-			<value>.jsp</value>
-		</property>
+	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolver" ref="templateResolver" />
+	</bean>
+	   
+	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+		<property name="templateEngine" ref="templateEngine" />
 	</bean>
 	
+ -->
+
+	<!-- 视图解析器(a JSP+JSTL ViewResolver in a Spring MVC application)  -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2" />
+		<property name="viewNames" value="*jsp" />
+	</bean>
+
+
+	<!-- 静态资源访问 -->  
 	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="Messages" />
+	</bean>
 
 
 	<!-- 全局异常解析器配置 -->
@@ -69,7 +91,5 @@
 	
 	<!-- 自定义实现接口HandlerExceptionResolver的异常处理 -->
 	<bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/>
-
-
 
 </beans>

@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class BaseController {
 
-	protected Logger logger = Logger.getLogger(HelloController.class);
+	protected Logger logger = Logger.getLogger(SiteController.class);
 	
 	/**
 	 * 基于注解@ExceptionHandler异常处理
