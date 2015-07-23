@@ -1,6 +1,24 @@
-.error {
+body {
+    font-size: 14px;
+    color: #4f4f4f;
+    font-family: Microsoft Yahei, Helvetica, Simsun !important ;
+}
+
+h1, h2, h3, h4, h5, h6, input, label, div, span, p {
+    font-family: Microsoft Yahei, Helvetica, Simsun !important ;
+}
+
+div.main{
+	min-height: 600px; 
+}
+
+/* 错误消息样式 */
+div.error {
 	color: red;
-	font-weight: bold;
+}
+/* 错误输入框样式 */
+input.error{
+/* 	background-color: #ffe5e5 !important; */
 }
 
 .highlight {
@@ -10,6 +28,11 @@
 	border: 1px solid #e1e1e8;
 	border-radius: 4px;
 }
+
+div.main {
+  padding: 50px 0;
+}
+
 
 header.marquee {
   padding: 50px 0;

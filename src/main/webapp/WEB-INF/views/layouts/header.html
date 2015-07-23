@@ -14,7 +14,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Maven Spring Web</a>
+            <a class="navbar-brand" th:href="@{/}" th:text="#{title.project.name}"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,9 +65,27 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="http://startbootstrap.tumblr.com/" title="The Official Start Bootstrap Blog">Blog</a>
+                
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" th:href="@{/user/create}"> 
+                    	<span th:text="#{title.user}"> User </span> <b class="caret"></b>
+                   	</a>
+                   	
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a th:href="@{/user/search}">
+                            	<i class="fa fa-list fa-fw"></i> <span th:text="#{title.user.search}"> Search User </span> 
+                            </a>
+                        </li>
+                        <li>
+                            <a th:href="@{/user/create}">
+                            	<i class="fa fa-desktop fa-fw"></i> <span th:text="#{title.user.create}"> Create User</span>
+                           	</a>
+                        </li>
+                    </ul>
                 </li>
+
+                
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Bootstrap Related Resources">Resources <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -79,6 +97,7 @@
                         </li>
                     </ul>
                 </li>
+                
                 <li>
                     <a th:href="@{/help}" title="Help with Start Bootstrap Templates &amp; Themes">Help</a>
                 </li>

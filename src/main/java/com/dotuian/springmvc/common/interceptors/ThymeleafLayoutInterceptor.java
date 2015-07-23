@@ -3,8 +3,6 @@ package com.dotuian.springmvc.common.interceptors;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-import org.apache.log4j.spi.LoggerFactory;
 import org.springframework.util.Assert;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,6 +10,18 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.dotuian.springmvc.common.annotations.Layout;
 
+/**
+ * 用于设置页面渲染的拦截器 
+ * 
+ * 通过配置拦截器，设置页面渲染的layout。
+ * <mvc:interceptors>
+ * 	<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
+ * </mvc:interceptors>
+ * 
+ * 在Controller或Controller中的Action通过注解 @Layout("layouts/layout1")设置使用渲染的layout
+ * 没有设置@Layout是，使用默认布局 "layouts/default"
+ * 
+ */
 public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
 
     private static final String DEFAULT_LAYOUT = "layouts/default";

@@ -52,6 +52,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
+		<url-pattern>/site/index</url-pattern>
 	</servlet-mapping>
 
 
@@ -69,5 +70,10 @@
 		<location>/error/404.jsp</location>
 	</error-page>
 
+
+	<!-- 默认跳转到 site/index 的路径  -->
+	<welcome-file-list>
+	    <welcome-file>site/index</welcome-file>
+	</welcome-file-list>
 
 </web-app>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:fragment="title">新建用户</title>
+</head>
+
+<body>
+<div class="main" th:fragment="content">
+	<h2>新建用户</h2>
+	<p>创建一个新的用户。</p>
+	
+	<div class="alert alert-danger" role="alert" th:errors="${userForm.*}"> </div>
+	
+	<div class="row">
+		<div class="col-md-6">
+		
+			<form action="#" th:action="@{/user/create}" th:object="${userForm}" method="post" class="form-horizontal">
+				
+				
+				<div class="form-group" th:class="${#fields.hasErrors('email')} ? 'form-group has-error' : form-group">
+				
+					<label for="username" th:text="#{userForm.email}" class="col-sm-2 control-label">username</label>
+					<div class="col-sm-10">
+						<input type="text" name="email" th:field="*{email}" class="form-control" th:errorclass="error" />
+						<div class="error" th:errors="${userForm.email}"></div>
+					</div> 
+				</div>
+				
+				<div class="form-group" th:class="${#fields.hasErrors('username')} ? 'form-group has-error' : form-group">
+					<label for="username" th:text="#{userForm.username}" class="col-sm-2 control-label">username</label>
+					<div class="col-sm-10">
+						<input type="text" name="username" th:field="*{username}" class="form-control" th:errorclass="error" />
+						<div class="error" th:errors="${userForm.username}"></div>
+					</div> 
+				</div>
+			
+				<div class="form-group" th:class="${#fields.hasErrors('password')} ? 'form-group has-error' : form-group">
+					<label for="password" th:text="#{userForm.password}" class="col-sm-2 control-label">password</label>
+					<div class="col-sm-10">
+						<input type="password" name="password" th:field="*{password}" class="form-control" th:errorclass="error"/>
+						<div class="error" th:errors="${userForm.password}"></div>
+					</div> 
+				</div>
+				
+				<div class="form-group" th:class="${#fields.hasErrors('sex')} ? 'form-group has-error' : form-group">
+					<label for="password" th:text="#{userForm.sex}" class="col-sm-2 control-label">password</label>
+					<div class="col-sm-10">
+						<label class="radio-inline" th:each="ty : ${sexTypes}" th:for="${#ids.next('sex')}" >
+							<input type="radio" th:field="*{sex}" th:value="${ty}" th:text="${ty}" th:errorclass="error"/>
+						</label>
+						<div class="error" th:errors="${userForm.sex}"></div>
+					</div> 
+				</div>
+
+				<div class="form-group">
+					<label for="year" th:text="#{userForm.birthday}" class="col-sm-2 control-label">sex</label>
+					
+					<div class="col-sm-10 form-inline">
+					
+						<label>
+							<select class="form-control" th:field="*{year}" th:errorclass="error" >
+							  <option th:each="year : ${years}" th:value="${year}" th:text="${year}"></option>
+							</select>
+							<span th:text="#{userForm.year}" ></span>
+						</label>
+					
+						<label>
+							<select class="form-control" th:field="*{month}" th:errorclass="error">
+							  <option th:each="month : ${months}" th:value="${month}" th:text="${month}"></option>
+							</select>
+							<span th:text="#{userForm.month}" ></span>
+						</label>
+						
+						<label>
+							<select class="form-control" th:field="*{day}" th:errorclass="error">
+							  <option th:each="day : ${days}" th:value="${day}" th:text="${day}"></option>
+							</select>
+							<span th:text="#{userForm.day}"></span>
+						</label>
+						
+						<div class="error" th:errors="${userForm.year}"></div>
+						<div class="error" th:errors="${userForm.month}"></div>
+						<div class="error" th:errors="${userForm.day}"></div>
+					</div> 
+				</div>
+				
+				<div class="form-group" th:class="${#fields.hasErrors('hobby')} ? 'form-group has-error' : form-group">
+					<label for="year" th:text="#{userForm.hobby}" class="col-sm-2 control-label">hobby</label>
+					<div class="col-sm-10">
+					
+						<label class="checkbox-inline" th:each="hobby : ${allHobbys}" th:for="${#ids.next('hobby')}" >
+							<input type="checkbox" th:field="*{hobby}" th:value="${hobby}" th:text="${hobby}" th:errorclass="error"/>
+						</label>
+						
+						<div class="error" th:errors="${userForm.hobby}"></div>
+					</div>
+				</div>
+				
+				<div class="form-group" th:class="${#fields.hasErrors('memo')} ? 'form-group has-error' : form-group">
+					<label for="year" th:text="#{userForm.memo}" class="col-sm-2 control-label">sex</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" rows="3" th:field="*{memo}" th:value="${memo}" th:errorclass="error"></textarea>
+						<div class="error" th:errors="${userForm.memo}"></div>
+					</div>
+				</div>
+
+			  	<hr/>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="submit" class="btn btn-default" th:text="#{userForm.submit}">Submit</button>
+					</div>
+				</div>
+		
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
