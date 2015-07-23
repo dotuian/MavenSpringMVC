@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.css" th:href="@{/resources/css/bootstrap.css}"/>
+	<link rel="stylesheet" type="text/css" media="all" href="../../css/site.css" th:href="@{/resources/css/site.css}"/>
+	
+	<title>登录界面</title>
+</head>
+
+<body>
+
+	<div th:replace="layouts/header :: header"></div>
+
+	<div th:replace="${view} :: content"></div>
+
+	<div th:replace="layouts/footer :: footer"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../../css/site.css" th:src="@{/resources/js/bootstrap.js}"></script>
+<script src="../../css/site.css" th:src="@{/resources/js/function.js}"></script>
+
+</body>
+</html>

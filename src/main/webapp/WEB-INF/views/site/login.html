@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>登录界面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.css" th:href="@{/resources/css/bootstrap.css}"/>
+<link rel="stylesheet" type="text/css" media="all" href="../../css/site.css" th:href="@{/resources/css/site.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">Spring 3 MVC Project</a>
+		</div>
+	</div>
+</nav>
+
+<div class="jumbotron">
+	<div class="container">
+		<h3>登录界面</h3>
+	</div>
+</div>
+
+<div class="container">
+
+	<h1 th:text="#{welcome.message(${loginForm.username})}"></h1>
+
+	
+	<p th:text="#{loginForm.username}"></p>
+	
+	<div class="row">
+		<div class="col-md-6">
+			<form action="${userActionUrl}" th:action="@{/site/login}" th:object="${loginForm}" method="post">
+				<div>
+					<label th:text="#{loginForm.username}">username</label>
+					<input type="text" id="username" name="username" th:value="*{username}" /> 
+				</div>
+				<div>
+					<label th:text="#{loginForm.password}">password</label>
+					<input type="text" id="username" name="password" th:value="*{password}" /> 
+				</div>
+
+	          <div class="submit">
+	            <button type="submit" name="login" th:text="#{loginForm.submit}">Login</button>    
+	          </div>
+			</form>
+		</div>
+	</div>
+
+	<hr></hr>
+	<footer>
+		<p>&copy; Mkyong.com 2015</p>
+	</footer>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../../css/site.css" th:src="@{/resources/js/bootstrap.js}"></script>
+<script src="../../css/site.css" th:src="@{/resources/js/function.js}"></script>
+
+</body>
+
+</html>

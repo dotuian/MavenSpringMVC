@@ -1,6 +1,7 @@
 package com.dotuian.springmvc.web.controllers;
 
 import java.net.URLDecoder;
+import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,19 +16,26 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dotuian.springmvc.common.annotations.Layout;
 import com.dotuian.springmvc.common.interceptors.AuthInterceptor;
-import com.dotuian.springmvc.common.interceptors.AuthPassport;
 import com.dotuian.springmvc.web.forms.LoginForm;
 
 @Controller
 @RequestMapping(value = "/site")
 public class SiteController extends BaseController {
 	
-	@Layout(value = "layouts/default")
-	@RequestMapping(value = "/test", method = { RequestMethod.GET })
-	public ModelAndView layout() {
-		ModelAndView model = new ModelAndView();
-		model.setViewName("/site/test");
-		return model;
+	@Layout(value = "layouts/layout1")
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String index(Principal principal) {
+		String page = (principal != null ? "homeSignedIn" : "homeNotSignedIn");
+		
+		logger.info("PAGE = " + page);
+		return page ;
+	}
+	
+	
+	
+	@ModelAttribute("loginForm")
+	public LoginForm populateVarieties() {
+		return new LoginForm();
 	}
 	
 	@RequestMapping(value = "/login", method = { RequestMethod.GET })
@@ -36,9 +44,9 @@ public class SiteController extends BaseController {
 		model.setViewName("/site/login");
 		model.addObject("redirectURL", redirectURL);
 
-		// 收集页面数据
-		LoginForm loginForm = new LoginForm();
-		model.addObject("loginForm", loginForm);
+//		// 收集页面数据
+//		LoginForm loginForm = new LoginForm();
+//		model.addObject("loginForm", loginForm);
 
 		return model;
 	}
@@ -66,7 +74,6 @@ public class SiteController extends BaseController {
 		}
 	}
 	
-	@Layout(value = "layouts/blank")
 	@RequestMapping(value = "/index", method = { RequestMethod.GET })
 	public String index() {
 		return "/site/index";

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+<head>
+<title>登录界面</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+<link rel="stylesheet" type="text/css" media="all" href="../../css/bootstrap.css" th:href="@{/resources/css/bootstrap.css}"/>
+<link rel="stylesheet" type="text/css" media="all" href="../../css/site.css" th:href="@{/resources/css/site.css}"/>
+
+</head>
+
+<body>
+
+<!-- Nav -->
+<div th:replace="/layouts/header :: header">...</div>
+<!-- Nav -->
+
+
+<header class="marquee">
+    <div class="container">
+        <span class="brand-name">Start Bootstrap</span>
+        <h1>Free Bootstrap Themes &amp; Templates</h1>
+        <p>Created and Maintained by <a th:href="@{http://www.ironsummitmedia.com}">Iron Summit Media Strategies</a>
+        </p>
+        <div id="social">
+            <a href="https://twitter.com/SBootstrap" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @SBootstrap</a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://startbootstrap.com" data-via="SBootstrap" data-lang="en">Tweet</a>
+        </div>
+        <a th:href="@{/template-categories/all}" class="btn btn-default btn-cta"><i class="fa fa-chevron-circle-right"></i> Browse Themes &amp; Templates</a>
+        <div class="sponsored-ad">
+            <a href="https://wrapbootstrap.com/?ref=StartBootstrap">
+                <img src="/assets/img/wrapbootstrap.jpg" alt="Wrap Bootstrap - Premium Bootstrap Themes" />
+            </a>
+        </div>
+    </div>
+</header>
+
+
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row home-intro text-center">
+        <div class="col-lg-12">
+            <h2 class="tagline">Forever free, open source, and easy to use.</h2>
+            <p class="lead">Start Bootstrap is a library of <strong>free to download Bootstrap 3 themes and templates</strong>. Our themes are open source for any use, even commercial. Download what you like and get started!</p>
+            <hr class="small" />
+        </div>
+    </div>
+    <div class="row previews">
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a th:href="@{/template-overviews/creative}" class="post-image-link">
+                    <p><img src="@{/assets/img/templates/creative.jpg}" class="img-responsive" alt="Free Bootstrap Creative Theme - Start Bootstrap" /></p>
+
+                </a>
+                <div class="caption">
+                    <h3>Creative</h3>
+                    <p>A one page creative theme.</p>
+                    <a th:href="@{/template-overviews/creative}" class="btn btn-default">Preview &amp; Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a th:href="@{/template-overviews/clean-blog}" class="post-image-link">
+                    <p><img src="@{/assets/img/templates/clean-blog.jpg}" class="img-responsive" alt="Free Bootstrap Blog Theme - Start Bootstrap" /></p>
+
+                </a>
+                <div class="caption">
+                    <h3>Clean Blog</h3>
+                    <p>A clean blog theme.</p>
+                    <a th:href="@{/template-overviews/clean-blog}" class="btn btn-default">Preview &amp; Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a th:href="@{/template-overviews/agency}" class="post-image-link">
+                    <p><img src="@{/assets/img/templates/agency.jpg}" class="img-responsive" alt="Free Bootstrap Agency Theme - Start Bootstrap" /></p>
+
+                </a>
+                <div class="caption">
+                    <h3>Agency</h3>
+                    <p>A one page agency theme.</p>
+                    <a th:href="@{/template-overviews/agency}" class="btn btn-default">Preview &amp; Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a th:href="@{/template-overviews/freelancer}" class="post-image-link">
+                    <p><img src="@{/assets/img/templates/freelancer.jpg}" class="img-responsive" alt="One Page Bootstrap Portfolio Theme" /></p>
+
+                </a>
+                <div class="caption">
+                    <h3>Freelancer</h3>
+                    <p>A one page freelancer theme.</p>
+                    <a th:href="@{/template-overviews/freelancer}" class="btn btn-default">Preview &amp; Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a th:href="@{/template-overviews/grayscale}" class="post-image-link">
+                    <p><img src="@{/assets/img/templates/grayscale.jpg}" class="img-responsive" alt="" /></p>
+
+                </a>
+                <div class="caption">
+                    <h3>Grayscale</h3>
+                    <p>A multipurpose one page theme.</p>
+                    <a th:href="@{/template-overviews/grayscale}" class="btn btn-default">Preview &amp; Download</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a th:href="@{/template-overviews/sb-admin-2}" class="post-image-link">
+                    <p><img src="@{/assets/img/templates/sb-admin-2.jpg}" class="img-responsive" alt="Free Bootstrap Admin Theme - SB Admin 2" /></p>
+
+                </a>
+                <div class="caption">
+                    <h3>SB Admin 2</h3>
+                    <p>A free Bootstrap admin theme.</p>
+                    <a th:href="@{/template-overviews/sb-admin-2}" class="btn btn-default">Preview &amp; Download</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="text-center btn-home">
+        <a th:href="@{/template-categories/all}" class="btn btn-outline">View All Themes &amp; Templates</a>
+    </div>
+    <hr class="small" />
+    <div class="row text-center">
+        <div class="col-lg-12">
+            <h3>Looking for something more?</h3>
+            <p class="lead">Try these premium Bootstrap themes from WrapBootstrap!</p>
+        </div>
+    </div>
+    <div class="row previews">
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a href="https://wrapbootstrap.com/theme/velocity-designed-for-products-WB0N38R04?ref=StartBootstrap" class="post-image-link">
+                    <img src="@{assets/img/premium/velocity.jpg}" alt="Premium Bootstrap Theme - Velocity" />
+                </a>
+                <div class="caption">
+                    <h3>Velocity</h3>
+                    <p>Designed for Products</p>
+                    <a href="https://wrapbootstrap.com/theme/velocity-designed-for-products-WB0N38R04?ref=StartBootstrap" class="btn btn-default">Preview &amp; Purchase</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a href="https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S?ref=StartBootstrap" class="post-image-link">
+                    <img src="@{assets/img/premium/inspinia.jpg}" alt="Premium Bootstrap Admin Template" />
+                </a>
+                <div class="caption">
+                    <h3>Inspinia</h3>
+                    <p>Responsive Admin Theme</p>
+                    <a href="https://wrapbootstrap.com/theme/inspinia-responsive-admin-theme-WB0R5L90S?ref=StartBootstrap" class="btn btn-default">Preview &amp; Purchase</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-sm-6">
+            <div class="thumbnail">
+                <a href="https://wrapbootstrap.com/theme/vitality-multipurpose-one-page-theme-WB02K3KK3?ref=StartBootstrap" class="post-image-link">
+                    <img src="@{assets/img/premium/vitality.jpg}" alt="Premium One Page Bootstrap Theme" />
+                </a>
+                <div class="caption">
+                    <h3>Vitality</h3>
+                    <p>Multipurpose One Page Theme</p>
+                    <a href="https://wrapbootstrap.com/theme/vitality-multipurpose-one-page-theme-WB02K3KK3?ref=StartBootstrap" class="btn btn-default">Preview &amp; Purchase</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center btn-home">
+        <a th:href="@{/buy-bootstrap-templates/}" class="btn btn-outline">View More Premium Themes</a>
+    </div>
+    
+    
+</div>
+
+
+
+<!-- Footer -->
+<div th:replace="/layouts/footer :: footer">...</div>
+<!-- Footer -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="../../css/site.css" th:src="@{/resources/js/bootstrap.js}"></script>
+<script src="../../css/site.css" th:src="@{/resources/js/function.js}"></script>
+
+</body>
+
+</html>

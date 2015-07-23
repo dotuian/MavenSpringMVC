@@ -8,74 +8,13 @@
 	<mvc:annotation-driven />
 
 	<mvc:interceptors>
-		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
-<!-- 		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" /> -->
-		
-		<ref bean="log4jInterceptor" />
-		
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/admin/**" />
-			<mvc:exclude-mapping path="/images/**" />
-			<bean class="org.springframework.web.servlet.theme.ThemeChangeInterceptor" />
-		</mvc:interceptor>
+		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
 		
 		<mvc:interceptor>
 			<mvc:mapping path="/sample/**" />
 			<bean class="com.dotuian.springmvc.common.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-
-	<bean id="log4jInterceptor"
-		class="org.springframework.web.context.request.Log4jNestedDiagnosticContextInterceptor" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 
-
-	<bean id="templateResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
-		<property name="templateMode" value="HTML5" />
-		<property name="cacheable" value="false" />
-		<property name="characterEncoding" value="UTF-8" />
-	</bean>
-
-	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
-		<property name="templateResolver" ref="templateResolver" />
-	</bean>
-
-	<bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-	  <property name="templateEngine" ref="templateEngine" />
-	  <property name="order" value="1" />
-	  <property name="viewNames" value="*.html,*.xhtml, *.jsp" />
-	</bean>
-
-	<bean name="main" class="org.thymeleaf.spring4.view.ThymeleafView">
-	  <property name="staticVariables">
-	    <map>
-	      <entry key="footer" value="Some company: &lt;b&gt;ACME&lt;/b&gt;" />
-	    </map>
-	  </property>
-	</bean>
- -->
-
-
-
 
 
 

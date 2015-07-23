@@ -10,3 +10,10 @@
 	border: 1px solid #e1e1e8;
 	border-radius: 4px;
 }
+
+header.marquee {
+  padding: 50px 0;
+  text-align: center;
+  color: #fff;
+  background-color: #b84d45;
+}
