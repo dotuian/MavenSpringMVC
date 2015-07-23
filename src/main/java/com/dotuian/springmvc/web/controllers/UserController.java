@@ -70,6 +70,10 @@ public class UserController extends BaseController {
 		return dataList;
 	}
 	
+	/**
+	 * 用户创建
+	 * @return
+	 */
 	@RequestMapping(value="/create", method = { RequestMethod.GET })
 	public String createUser() {
 
@@ -86,5 +90,28 @@ public class UserController extends BaseController {
 		
 		return "user/create";
 	}
+	
+	/**
+	 * 用户检索
+	 * @return
+	 */
+	@RequestMapping(value="/search", method = { RequestMethod.GET })
+	public String searchUser() {
+
+		return "user/search";
+	}
+
+	@RequestMapping(value="/search", method = { RequestMethod.POST })
+	public String doSearchUser(UserForm userForm) {
+		
+		
+		return "user/search";
+	}
+	
+	
+	
+	
+	
+	
 	
 }

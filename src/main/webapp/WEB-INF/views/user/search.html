@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title th:fragment="title">新建用户</title>
+</head>
+
+<body>
+<div class="main" th:fragment="content">
+	<h2>检索用户</h2>
+	<p>指定信息，检索用户信息。</p>
+
+
+<div class="row">
+	<div class="col-md-12">
+
+		<form action="#" th:action="@{/user/search}" th:object="${userForm}" method="post" class="form-inline">
+			<div class="form-group">			
+				<input type="text" class="form-control" th:field="*{email}" th:placeholder="#{userForm.email}" />
+				<input type="text" class="form-control" th:field="*{username}" th:placeholder="#{userForm.username}" />
+				<input type="text" class="form-control" th:field="*{year}" th:placeholder="#{userForm.birthday}" />
+	
+				<select class="form-control" th:field="*{sex}" >
+				  <option th:each="sex : ${sexTypes}" th:value="${sex}" th:text="${sex}"></option>
+				</select>
+				
+				<select class="form-control" th:field="*{hobby}" >
+				  <option th:each="hobby : ${allHobbys}" th:value="${hobby}" th:text="${hobby}"></option>
+				</select>
+	
+				<input type="text" class="form-control" th:field="*{memo}" th:placeholder="#{userForm.memo}" />
+				
+				<button type="submit" class="btn btn-primary" th:text="#{button.search}"></button>
+			</div>
+		</form>
+	</div>
+</div>
+
+
+	<br/>
+	<br/>
+	<br/>
+
+		<div class="panel panel-primary">
+		  <!-- Default panel contents -->
+		  <div class="panel-heading">检索结果</div>
+		  <div class="panel-body">
+				<p>...</p>
+		  </div>
+		  
+		  <div class="table-responsive">
+		  
+			<table class="table table-bordered table-hover table-condensed">
+				<tbody>
+					<tr class="active">
+						<td>111</td>
+						<td>222</td>
+						<td>333</td>
+					</tr>
+					<tr class="success">
+						<td>111</td>
+						<td>222</td>
+						<td>333</td>
+					</tr>
+					<tr class="warning">
+						<td>111</td>
+						<td>222</td>
+						<td>333</td>
+					</tr>
+					<tr class="danger">
+						<td>111</td>
+						<td>222</td>
+						<td>333</td>
+					</tr>
+					<tr class="info">
+						<td>111</td>
+						<td>222</td>
+						<td>333</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+</div>
+
+
+</body>
+</html>
