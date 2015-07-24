@@ -2,8 +2,8 @@ package com.dotuian.springmvc.service;
 
 import java.util.List;
 
-import com.dotuian.springmvc.dto.XmlUser;
-import com.dotuian.springmvc.web.forms.User;
+import com.dotuian.springmvc.service.dto.XmlUser;
+import com.dotuian.springmvc.web.user.forms.User;
 
 public interface SampleService {
 

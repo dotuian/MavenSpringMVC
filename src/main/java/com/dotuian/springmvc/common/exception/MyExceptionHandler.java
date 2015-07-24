@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dotuian.springmvc.web.controllers.SiteController;
+import com.dotuian.springmvc.web.site.controllers.SiteController;
 
 /**
  * http://www.mincoder.com/article/2500.shtml

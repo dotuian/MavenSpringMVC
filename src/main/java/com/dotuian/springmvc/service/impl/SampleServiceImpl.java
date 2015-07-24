@@ -8,9 +8,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.stereotype.Service;
 
-import com.dotuian.springmvc.dto.XmlUser;
 import com.dotuian.springmvc.service.SampleService;
-import com.dotuian.springmvc.web.forms.User;
+import com.dotuian.springmvc.service.dto.XmlUser;
+import com.dotuian.springmvc.web.user.forms.User;
 
 @Service
 @XmlRootElement(name = "student-list")

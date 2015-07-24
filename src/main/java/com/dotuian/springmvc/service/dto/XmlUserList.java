@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.dto;
+package com.dotuian.springmvc.service.dto;
 
 import java.util.List;
 

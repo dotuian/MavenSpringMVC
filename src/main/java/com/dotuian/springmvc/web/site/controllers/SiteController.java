@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.web.controllers;
+package com.dotuian.springmvc.web.site.controllers;
 
 import java.net.URLDecoder;
 import java.security.Principal;
@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dotuian.springmvc.common.interceptors.AuthInterceptor;
-import com.dotuian.springmvc.web.forms.LoginForm;
+import com.dotuian.springmvc.web.base.controllers.BaseController;
+import com.dotuian.springmvc.web.site.forms.LoginForm;
 
 @Controller
 @RequestMapping(value = "/site")

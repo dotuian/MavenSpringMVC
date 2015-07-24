@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.web.controllers;
+package com.dotuian.springmvc.web.base.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,6 +6,8 @@ import org.apache.log4j.Logger;
 import org.apache.avalon.framework.parameters.ParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.dotuian.springmvc.web.site.controllers.SiteController;
 
 public class BaseController {
 

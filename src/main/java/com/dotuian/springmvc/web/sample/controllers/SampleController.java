@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.web.controllers;
+package com.dotuian.springmvc.web.sample.controllers;
 
 import java.net.URLDecoder;
 import java.util.Date;
@@ -25,12 +25,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.dotuian.springmvc.common.interceptors.AuthInterceptor;
 import com.dotuian.springmvc.common.interceptors.AuthPassport;
-import com.dotuian.springmvc.dto.XmlUser;
-import com.dotuian.springmvc.dto.XmlUserList;
 import com.dotuian.springmvc.service.SampleService;
-import com.dotuian.springmvc.web.forms.LoginForm;
-import com.dotuian.springmvc.web.forms.User;
-import com.dotuian.springmvc.web.validators.LoginFormValidator;
+import com.dotuian.springmvc.service.dto.XmlUser;
+import com.dotuian.springmvc.service.dto.XmlUserList;
+import com.dotuian.springmvc.web.base.controllers.BaseController;
+import com.dotuian.springmvc.web.site.forms.LoginForm;
+import com.dotuian.springmvc.web.site.validators.LoginFormValidator;
+import com.dotuian.springmvc.web.user.forms.User;
 
 
 /**

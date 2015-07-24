@@ -1,11 +1,11 @@
-package com.dotuian.springmvc.web.validators;
+package com.dotuian.springmvc.web.site.validators;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.dotuian.springmvc.web.forms.LoginForm;
+import com.dotuian.springmvc.web.site.forms.LoginForm;
 
 @Component
 public class LoginFormValidator implements Validator {

@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.web.forms;
+package com.dotuian.springmvc.web.user.forms;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

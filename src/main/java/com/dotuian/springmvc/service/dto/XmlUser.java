@@ -1,6 +1,10 @@
-package com.dotuian.springmvc.web.forms;
+package com.dotuian.springmvc.service.dto;
 
-public class User {
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "xmluser")
+public class XmlUser {
 
 	private long userid;
 	private String username;
@@ -11,6 +15,7 @@ public class User {
 		return userid;
 	}
 
+	@XmlElement
 	public void setUserid(long userid) {
 		this.userid = userid;
 	}
@@ -19,6 +24,7 @@ public class User {
 		return username;
 	}
 
+	@XmlElement
 	public void setUsername(String username) {
 		this.username = username;
 	}
@@ -27,6 +33,7 @@ public class User {
 		return age;
 	}
 
+	@XmlElement
 	public void setAge(int age) {
 		this.age = age;
 	}
@@ -35,6 +42,7 @@ public class User {
 		return sex;
 	}
 
+	@XmlElement
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
@@ -53,7 +61,5 @@ public class User {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
 
 }

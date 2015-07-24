@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.web.controllers;
+package com.dotuian.springmvc.web.user.controllers;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.dotuian.springmvc.web.forms.UserForm;
+import com.dotuian.springmvc.web.base.controllers.BaseController;
+import com.dotuian.springmvc.web.user.forms.UserForm;
+import com.dotuian.springmvc.web.user.forms.UserSearchForm;
 
 @Controller
 @RequestMapping(value = "/user")
@@ -20,9 +22,15 @@ public class UserController extends BaseController {
 	// 在该Controller中的Action执行之前，该方法会先先被调用，
 	// 之后执行的Action，View可以通过 userForm 获取该方法的返回值。
 	@ModelAttribute("userForm")
-	public UserForm populateVarieties() {
+	public UserForm createUserFrom() {
 		return new UserForm();
 	}
+	
+	@ModelAttribute("searchForm")
+	public UserSearchForm searchUserForm() {
+		return new UserSearchForm();
+	}
+
 	
 	@ModelAttribute("sexTypes")
 	public List<String> sexTypes() {
@@ -100,9 +108,9 @@ public class UserController extends BaseController {
 
 		return "user/search";
 	}
-
+	
 	@RequestMapping(value="/search", method = { RequestMethod.POST })
-	public String doSearchUser(UserForm userForm) {
+	public String doSearchUser(UserSearchForm searchForm) {
 		
 		
 		return "user/search";
