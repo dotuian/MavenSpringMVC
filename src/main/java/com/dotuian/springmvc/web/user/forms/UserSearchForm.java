@@ -1,15 +1,29 @@
 package com.dotuian.springmvc.web.user.forms;
 
 public class UserSearchForm {
-	
+
+	private String email;
 	private String username;
 	private String password;
 	private String sex;
-	private String year;
-	private String month;
-	private String day;
+	private String birthday;
 	private String hobby;
 	private String memo;
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * @param email
+	 *            the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	/**
 	 * @return the username
@@ -57,48 +71,18 @@ public class UserSearchForm {
 	}
 
 	/**
-	 * @return the year
+	 * @param birthday
+	 *            the birthday to set
 	 */
-	public String getYear() {
-		return year;
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
-
+	
 	/**
-	 * @param year
-	 *            the year to set
+	 * @return the birthday
 	 */
-	public void setYear(String year) {
-		this.year = year;
-	}
-
-	/**
-	 * @return the month
-	 */
-	public String getMonth() {
-		return month;
-	}
-
-	/**
-	 * @param month
-	 *            the month to set
-	 */
-	public void setMonth(String month) {
-		this.month = month;
-	}
-
-	/**
-	 * @return the day
-	 */
-	public String getDay() {
-		return day;
-	}
-
-	/**
-	 * @param day
-	 *            the day to set
-	 */
-	public void setDay(String day) {
-		this.day = day;
+	public String getBirthday() {
+		return birthday;
 	}
 
 	/**
@@ -130,5 +114,4 @@ public class UserSearchForm {
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
-
 }

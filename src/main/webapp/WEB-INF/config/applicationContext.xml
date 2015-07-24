@@ -14,8 +14,10 @@
 		http://www.springframework.org/schema/tx 
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+	<!-- 注解扫描包 -->  
 	<context:component-scan base-package="com.dotuian.springmvc" />
-		
+	
+	<!-- 开启注解 -->
 	<mvc:annotation-driven>
 		<!--  让输入的Json字符串格式化 -->
 		<mvc:message-converters>
@@ -24,7 +26,8 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-
+	
+	<!-- 定义视图解析器 -->    
 	<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">  
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".html" />
@@ -84,7 +87,6 @@
 	 -->
 
 
-
 	<!-- 全局异常解析器配置 -->
 	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
@@ -113,6 +115,6 @@
 	</bean>
 	
 	<!-- 自定义实现接口HandlerExceptionResolver的异常处理 -->
-	<bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/>
+	<!-- <bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/>  -->
 
 </beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	
+	<!-- 数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/springmvc" />
+		<property name="username" value="root" />
+		<property name="password" value="vertrigo" />
+	</bean>
+
+	<!-- Hibernate 4 SessionFactory Bean definition -->
+	<!-- LocalSessionFactoryBean: creates a Hibernate’s SessionFactory which 
+		is injected into Hibernate-based DAO classes. -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- dataSource属性指定要用到的数据源，因此在Hibernate的 核心配置文件中就无需再配置与数据库连接相关的属性 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 指定要用到的实体映射文件 -->
+		<property name="mappingResources">
+			<list>
+			</list>
+		</property>
+
+		<property name="annotatedClasses">
+			<list>
+				<value>com.dotuian.springmvc.domain.User</value>
+			</list>
+		</property>
+
+		<!-- 配置Hibernate的属性 -->
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<!-- 
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				 -->
+			</props>
+		</property>
+	</bean>
+
+	<!-- HibernateTransactionManager : provides transaction support code for 
+		a SessionFactory -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

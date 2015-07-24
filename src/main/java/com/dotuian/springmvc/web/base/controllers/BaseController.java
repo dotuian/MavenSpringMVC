@@ -7,11 +7,9 @@ import org.apache.avalon.framework.parameters.ParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dotuian.springmvc.web.site.controllers.SiteController;
-
 public class BaseController {
 
-	protected Logger logger = Logger.getLogger(SiteController.class);
+	protected Logger logger = Logger.getLogger(BaseController.class);
 	
 	/**
 	 * 基于注解@ExceptionHandler异常处理

@@ -13,18 +13,18 @@
 <div class="row">
 	<div class="col-md-12">
 
-		<form action="#" th:action="@{/user/search}" th:object="${userForm}" method="post" class="form-inline">
+		<form action="#" th:action="@{/user/search}" th:object="${searchForm}" method="post" class="form-inline">
 			<div class="form-group">			
 				<input type="text" class="form-control" th:field="*{email}" th:placeholder="#{userForm.email}" />
 				<input type="text" class="form-control" th:field="*{username}" th:placeholder="#{userForm.username}" />
-				<input type="text" class="form-control" th:field="*{year}" th:placeholder="#{userForm.birthday}" />
+				<input type="text" class="form-control" th:field="*{birthday}" th:placeholder="#{userForm.birthday}" />
 	
 				<select class="form-control" th:field="*{sex}" >
-				  <option th:each="sex : ${sexTypes}" th:value="${sex}" th:text="${sex}"></option>
+				  <option th:each="sex : ${sexTypes}" th:value="${sex.key}" th:text="${sex.value}"></option>
 				</select>
 				
 				<select class="form-control" th:field="*{hobby}" >
-				  <option th:each="hobby : ${allHobbys}" th:value="${hobby}" th:text="${hobby}"></option>
+				  <option th:each="hobby : ${allHobbys}" th:value="${hobby.key}" th:text="${hobby.value}"></option>
 				</select>
 	
 				<input type="text" class="form-control" th:field="*{memo}" th:placeholder="#{userForm.memo}" />
@@ -44,37 +44,41 @@
 		  <!-- Default panel contents -->
 		  <div class="panel-heading">检索结果</div>
 		  <div class="panel-body">
-				<p>...</p>
+			<p>用户详细信息</p>
 		  </div>
 		  
 		  <div class="table-responsive">
 		  
 			<table class="table table-bordered table-hover table-condensed">
+				<thead>
+					<tr>
+						<td>#</td>
+						<td>Email</td>
+						<td>UserName</td>
+						<td>Password</td>
+						<td>Birthday</td>
+						<td>Sex</td>
+						<td>Hobbys</td>
+						<td>Create User</td>
+						<td>Create Time</td>
+						<td>Update User</td>
+						<td>Update Time</td>
+					</tr>
+				</thead>
 				<tbody>
-					<tr class="active">
-						<td>111</td>
-						<td>222</td>
-						<td>333</td>
-					</tr>
-					<tr class="success">
-						<td>111</td>
-						<td>222</td>
-						<td>333</td>
-					</tr>
-					<tr class="warning">
-						<td>111</td>
-						<td>222</td>
-						<td>333</td>
-					</tr>
-					<tr class="danger">
-						<td>111</td>
-						<td>222</td>
-						<td>333</td>
-					</tr>
-					<tr class="info">
-						<td>111</td>
-						<td>222</td>
-						<td>333</td>
+					<!-- http://www.thymeleaf.org/doc/articles/springmvcaccessdata.html -->
+					<tr th:each="user : ${users}">
+					    <td th:text="${user.id}"></td>
+					    <td th:text="${user.email}"></td>
+					    <td th:text="${user.username}"></td>
+					    <td th:text="${user.password}"></td>
+					    <td th:text="${user.birthday}"></td>
+					    <td th:text="${user.sex}"></td>
+					    <td th:text="${user.hobbys}"></td>
+					    <td th:text="${user.createUser.username}"></td>
+					    <td th:text="${user.createTime}"></td>
+					    <td th:text="${user.updateUser.username}"></td>
+					    <td th:text="${user.updateTime}"></td>
 					</tr>
 				</tbody>
 			</table>

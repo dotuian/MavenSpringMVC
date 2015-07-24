@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import com.dotuian.springmvc.service.SampleService;
@@ -16,6 +17,8 @@ import com.dotuian.springmvc.web.user.forms.User;
 @XmlRootElement(name = "student-list")
 public class SampleServiceImpl implements SampleService {
 
+	protected Logger logger = Logger.getLogger(SampleServiceImpl.class);
+	
 	@Override
 	public List<String> getStringList() {
 		List<String> dataList = new ArrayList<String>();

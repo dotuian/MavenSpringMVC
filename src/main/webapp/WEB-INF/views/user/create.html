@@ -45,8 +45,8 @@
 				<div class="form-group" th:class="${#fields.hasErrors('sex')} ? 'form-group has-error' : form-group">
 					<label for="password" th:text="#{userForm.sex}" class="col-sm-2 control-label">password</label>
 					<div class="col-sm-10">
-						<label class="radio-inline" th:each="ty : ${sexTypes}" th:for="${#ids.next('sex')}" >
-							<input type="radio" th:field="*{sex}" th:value="${ty}" th:text="${ty}" th:errorclass="error"/>
+						<label class="radio-inline" th:each="sex : ${sexTypes}" th:for="${#ids.next('sex')}" >
+							<input type="radio" th:field="*{sex}" th:value="${sex.key}" th:text="${sex.value}" th:errorclass="error"/>
 						</label>
 						<div class="error" th:errors="${userForm.sex}"></div>
 					</div> 
@@ -89,7 +89,7 @@
 					<div class="col-sm-10">
 					
 						<label class="checkbox-inline" th:each="hobby : ${allHobbys}" th:for="${#ids.next('hobby')}" >
-							<input type="checkbox" th:field="*{hobby}" th:value="${hobby}" th:text="${hobby}" th:errorclass="error"/>
+							<input type="checkbox" th:field="*{hobby}" th:value="${hobby.key}" th:text="${hobby.value}" th:errorclass="error"/>
 						</label>
 						
 						<div class="error" th:errors="${userForm.hobby}"></div>
