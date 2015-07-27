@@ -6,16 +6,46 @@
 
 	<display-name>Servlet 3.0 Web Application</display-name>
 
-	<!-- 区分项目名称，防止默认重名 -->
+	<!-- The master configuration file for this Spring web application -->
 	<context-param>
-		<param-name>webAppRootKey</param-name>
-		<param-value>maven.example.root</param-value>
+	    <param-name>contextConfigLocation</param-name>
+	    <param-value>
+	    	/WEB-INF/config/applicationContext.xml,
+	    	/WEB-INF/config/spring-*.xml
+    	</param-value>
 	</context-param>
+
+	<!-- Enables use of HTTP methods PUT and DELETE -->
+	<filter>
+		<filter-name>httpMethodFilter</filter-name>
+		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>httpMethodFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- SpringSecurity 核心过滤器配置 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Loads the Spring web application context -->
+	<listener>
+	    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 	<!-- Spring的log4j监听器 -->
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
+
 
 	<!-- 字符集 过滤器 -->
 	<filter>
@@ -36,17 +66,6 @@
 	</filter-mapping>
 
 
-	<!-- SpringSecurity 核心过滤器配置 -->  
-<!-- 	<filter> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
-<!-- 	</filter> -->
-<!-- 	<filter-mapping> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<url-pattern>/*</url-pattern> -->
-<!-- 	</filter-mapping> -->
-
-
 	<!-- 核心控制器 -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
@@ -54,14 +73,10 @@
 		<init-param>
 			<!-- 加载Spring的配置文件 -->  
 			<param-name>contextConfigLocation</param-name>
-			<param-value>
-				/WEB-INF/config/applicationContext.xml,
-				/WEB-INF/config/spring-*.xml
-			</param-value>
+			<param-value></param-value>
 		</init-param>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>

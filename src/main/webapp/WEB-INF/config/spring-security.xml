@@ -1,42 +1,69 @@
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:security="http://www.springframework.org/schema/security"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
-          http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-          http://www.springframework.org/schema/security
-          http://www.springframework.org/schema/security/spring-security.xsd">
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/security
+                        http://www.springframework.org/schema/security/spring-security.xsd">
+
+<!-- 
+　　Spring Security3的使用中，有4种方法：
+　　一种是全部利用配置文件，将用户、权限、资源(url)硬编码在xml文件中，已经实现过，并经过验证；
+　　二种是用户和权限用数据库存储，而资源(url)和权限的对应采用硬编码配置，目前这种方式已经实现，并经过验证。
+　　三种是细分角色和权限，并将用户、角色、权限和资源均采用数据库存储，并且自定义过滤器，代替原有的FilterSecurityInterceptor过滤器，
+    并分别实现AccessDecisionManager、InvocationSecurityMetadataSourceService和UserDetailsService，并在配置文件中进行相应配置。
+    目前这种方式已经实现，并经过验证。
+　　四是修改spring security的源代码，主要是修改InvocationSecurityMetadataSourceService和UserDetailsService两个类。
+ -->
 
 
-<!-- 	<security:http pattern="/resources/**" security="none" /> -->
 
-<!-- 	<security:http pattern="/site/login" security="none" /> -->
+	<http pattern="/resources/**" security="none" />
 
-<!-- 	<security:http use-expressions="true"> -->
-<!-- 		<security:intercept-url pattern="/logout" access="permitAll" /> -->
-<!-- 		<security:intercept-url pattern="/login" access="permitAll" /> -->
-<!-- 		<security:intercept-url pattern="/signup" access="permitAll" /> -->
-<!-- 		<security:intercept-url pattern="/about" access="permitAll" /> -->
-<!-- 		<security:intercept-url pattern="/**" access="hasRole('ROLE_USER')" /> -->
-<!-- 		<security:logout logout-success-url="/login?logout" logout-url="/logout" /> -->
+	<!-- 
+		http: 部分配置如何拦截用户请求。auto-config='true'将自动配置几种常用的权限控制机制，包括 form, anonymous, rememberMe 
+		intercept-url: 来判断用户需要具有何种权限才能访问对应的 url资源 当用户访问的 url 资源满足多个 intercepter-url 
+		时，系统将使用第一个符合条件的intercept-url 进行权限控制。
+	-->
+	<http auto-config="true">
+		<intercept-url pattern="/site/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
+		<intercept-url pattern="/**" access="ROLE_USER" />
 		
-<!-- 		<security:form-login  -->
-<!-- 			authentication-failure-url="/login?error"  -->
-<!-- 			login-page="/login"  -->
-<!-- 			login-processing-url="/login"  -->
-<!-- 			password-parameter="password" -->
-<!-- 			username-parameter="username" /> -->
+		<form-login login-page="site/login" authentication-failure-url="/" default-target-url="/"/>
+        <logout logout-url="/site/logout" logout-success-url="/"/>
 
-<!-- 	</security:http> -->
+	</http>
+	
+	
+    <authentication-manager alias="authenticationManager">
+        <authentication-provider ref="casAuthProvider" user-service-ref="myUserDetailsService">
+                
+        </authentication-provider>
+    </authentication-manager>
+	
+    <user-service id="userService">
+            <user name="user" password="user" authorities="ROLE_USER"/>
+            <user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN"/>
+    </user-service>
+	
+	
+<!-- 	<beans:bean id="myUserDetailsService" class="com.dotuian.springmvc.common.security.MyUserDetailsService"> -->
+<!-- 	</beans:bean> -->
 
 
-<!-- 	<security:authentication-manager> -->
-<!-- 		<security:authentication-provider> -->
-<!-- 			<security:jdbc-user-service -->
-<!-- 				data-source-ref="dataSource" -->
-<!-- 				users-by-username-query="select username,password,enabled from t?users where username=?" -->
-<!-- 				authorities-by-username-query="select u1.username, u2.role from user_authentication u1, user_authorization u2 where u1.user_id = u2.user_id and u1.username =?" /> -->
-<!-- 		</security:authentication-provider> -->
-<!-- 	</security:authentication-manager> -->
 
 
-</beans>
+
+	<!-- UsernamePasswordAuthenticationFilter -->
+	
+	<!-- LogoutHandler : 退出后加点自己的逻辑 -->
+
+
+<!--     <beans:bean id="authenticationFailureListener" class="ozone.securitysample.authentication.listener.AuthenticationFailureListener" /> -->
+<!--     <beans:bean id="authenticationSuccessListener" class="ozone.securitysample.authentication.listener.AuthenticationSuccessListener"/> -->
+
+
+
+
+
+</beans:beans>
