@@ -7,55 +7,54 @@ public class LoginForm {
 
 	@Size(min=3, max=20)
 	@NotNull
-	private String username;
-	@NotNull
-	@Size(min=6, max=15)
-	private String password;
+	private String j_username;
 	
-	private boolean rememberMe = false;
+	@NotNull
+	@Size(min=3, max=15)
+	private String j_password;
+	
+	private boolean _spring_security_remember_me = false;
 
 	/**
-	 * @return the username
+	 * @return the j_username
 	 */
-	public String getUsername() {
-		return username;
+	public String getJ_username() {
+		return j_username;
 	}
 
 	/**
-	 * @param username
-	 *            the username to set
+	 * @param j_username the j_username to set
 	 */
-	public void setUsername(String username) {
-		this.username = username;
+	public void setJ_username(String j_username) {
+		this.j_username = j_username;
 	}
 
 	/**
-	 * @return the password
+	 * @return the j_password
 	 */
-	public String getPassword() {
-		return password;
+	public String getJ_password() {
+		return j_password;
 	}
 
 	/**
-	 * @param password
-	 *            the password to set
+	 * @param j_password the j_password to set
 	 */
-	public void setPassword(String password) {
-		this.password = password;
+	public void setJ_password(String j_password) {
+		this.j_password = j_password;
 	}
 
 	/**
-	 * @return the rememberMe
+	 * @return the _spring_security_remember_me
 	 */
-	public boolean isRememberMe() {
-		return rememberMe;
+	public boolean is_spring_security_remember_me() {
+		return _spring_security_remember_me;
 	}
 
 	/**
-	 * @param rememberMe
-	 *            the rememberMe to set
+	 * @param _spring_security_remember_me the _spring_security_remember_me to set
 	 */
-	public void setRememberMe(boolean rememberMe) {
-		this.rememberMe = rememberMe;
+	public void set_spring_security_remember_me(boolean _spring_security_remember_me) {
+		this._spring_security_remember_me = _spring_security_remember_me;
 	}
+	
 }

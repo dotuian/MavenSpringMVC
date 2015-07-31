@@ -80,7 +80,7 @@
 	<servlet-mapping>
 		<servlet-name>dispatcher</servlet-name>
 		<url-pattern>/</url-pattern>
-		<url-pattern>/site/index</url-pattern>
+		<url-pattern>/site/login</url-pattern>
 	</servlet-mapping>
 
 
@@ -101,7 +101,7 @@
 
 	<!-- 默认跳转到 site/index 的路径  -->
 	<welcome-file-list>
-	    <welcome-file>site/index</welcome-file>
+	    <welcome-file>site/login</welcome-file>
 	</welcome-file-list>
 
 </web-app>

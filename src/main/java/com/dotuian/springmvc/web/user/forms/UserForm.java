@@ -13,11 +13,11 @@ public class UserForm {
 	private String email;
 
 	@NotEmpty
-	@Size(min = 6, max = 20)
+	@Size(min = 3, max = 20)
 	private String username;
 
 	@NotEmpty
-	@Size(min = 6, max = 20)
+	@Size(min = 3, max = 20)
 	private String password;
 
 	@NotNull

@@ -86,35 +86,8 @@
 	</bean>
 	 -->
 
-
-	<!-- 全局异常解析器配置 -->
-	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-		<!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
-		<property name="warnLogCategory" value="WARN"></property>
-		<!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->
-		<property name="defaultErrorView" value="errors/error"></property>
-	    <!-- 定义异常处理页面用来获取异常信息的变量名，默认名为exception -->  
-	    <property name="exceptionAttribute" value="exception"></property>  
-		<!-- 默认HTTP状态码 -->
-		<property name="defaultStatusCode" value="500"></property>
-		
-		<!-- 定义需要特殊处理的异常，用类名或完全路径名作为key，异常对应的页面路径作为值 -->
-		<property name="exceptionMappings">
-			<props>
-				<!-- 在这里可以定义处理自定义的异常类 -->
-				<prop key="java.lang.Exception">errors/exception</prop>
-				<prop key="java.lang.Throwable">errors/exception</prop>
-			</props>
-		</property>
-		<property name="statusCodes">
-			<props>
-				<prop key="errors/404">404</prop>
-				<prop key="errors/500">500</prop>
-			</props>
-		</property>
-	</bean>
 	
 	<!-- 自定义实现接口HandlerExceptionResolver的异常处理 -->
-	<!-- <bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/>  -->
+	<bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/> 
 
 </beans>

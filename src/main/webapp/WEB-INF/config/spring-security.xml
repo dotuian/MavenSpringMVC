@@ -16,7 +16,6 @@
  -->
 
 
-
 	<http pattern="/resources/**" security="none" />
 
 	<!-- 
@@ -25,45 +24,42 @@
 		时，系统将使用第一个符合条件的intercept-url 进行权限控制。
 	-->
 	<http auto-config="true">
-		<intercept-url pattern="/site/login" access="IS_AUTHENTICATED_ANONYMOUSLY" />
-		<intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
-		<intercept-url pattern="/**" access="ROLE_USER" />
+	
+	    <!-- 对登录页面，所有的用户都可以访问 -->
+        <intercept-url pattern="/site/login" access="permitAll" /> 
+	
+		<intercept-url pattern="/user/**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/sample/**" access="ROLE_USER" />
 		
-		<form-login login-page="site/login" authentication-failure-url="/" default-target-url="/"/>
-        <logout logout-url="/site/logout" logout-success-url="/"/>
-
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"></intercept-url>
+		
+		<!-- 
+			default-target-url表示登陆成功时，跳转到哪个页面
+		 -->
+		<form-login login-page="/site/login" login-processing-url="/j_spring_security_check" 
+			authentication-failure-url="/site/login?error" default-target-url="/site/index"/>
+		
+		<logout logout-success-url="/j_spring_security_logout"></logout>
+		
+		<csrf/>
 	</http>
+
+
+
+	<authentication-manager alias="authenticationManager">
+		<authentication-provider user-service-ref="userDetailsService" />
+
+<!-- 		<authentication-provider ref="myAuthenticationProvider"/> -->
+
+	</authentication-manager>
+	
+	<beans:bean id="myAuthenticationProvider" class="com.dotuian.springmvc.common.security.MyAuthenticationProvider"></beans:bean>
 	
 	
-    <authentication-manager alias="authenticationManager">
-        <authentication-provider ref="casAuthProvider" user-service-ref="myUserDetailsService">
-                
-        </authentication-provider>
-    </authentication-manager>
-	
-    <user-service id="userService">
-            <user name="user" password="user" authorities="ROLE_USER"/>
-            <user name="admin" password="admin" authorities="ROLE_USER,ROLE_ADMIN"/>
-    </user-service>
+	<beans:bean id="userDetailsService" class="com.dotuian.springmvc.common.security.MyUserDetailsService"/>
 	
 	
-<!-- 	<beans:bean id="myUserDetailsService" class="com.dotuian.springmvc.common.security.MyUserDetailsService"> -->
-<!-- 	</beans:bean> -->
-
-
-
-
-
-	<!-- UsernamePasswordAuthenticationFilter -->
-	
-	<!-- LogoutHandler : 退出后加点自己的逻辑 -->
-
-
-<!--     <beans:bean id="authenticationFailureListener" class="ozone.securitysample.authentication.listener.AuthenticationFailureListener" /> -->
-<!--     <beans:bean id="authenticationSuccessListener" class="ozone.securitysample.authentication.listener.AuthenticationSuccessListener"/> -->
-
-
-
-
+<!--     <beans:bean id="loginFailureHandler" class="com.dotuian.springmvc.common.security.LoginFailureHandler" /> -->
+<!--     <beans:bean id="loginSuccessHandler" class="com.dotuian.springmvc.common.security.LoginSuccessHandler" /> -->
 
 </beans:beans>
