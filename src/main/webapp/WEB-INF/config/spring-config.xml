@@ -8,6 +8,9 @@
 	<mvc:annotation-driven />
 
 	<mvc:interceptors>
+	
+		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
+	
 		<!--  Thymeleaf template -->
 		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
 		
@@ -15,6 +18,8 @@
 			<mvc:mapping path="/sample/**" />
 			<bean class="com.dotuian.springmvc.common.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
+		
+		
 	</mvc:interceptors>
 
 

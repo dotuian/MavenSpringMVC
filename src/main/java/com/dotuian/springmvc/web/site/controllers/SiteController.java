@@ -69,24 +69,24 @@ public class SiteController extends BaseController {
 			String redirectURL) {
 
 		// 模拟登陆成功 用户admin 密码admin的用户
-//		if (StringUtils.isNotBlank(loginForm.getPassword()) && StringUtils.isNotBlank(loginForm.getPassword())
-//				&& loginForm.getPassword().equals("admin") && loginForm.getPassword().equals("admin")) {
-//			// 当登陆成功是，将用户信息存放到session中去
-//			HttpSession session = request.getSession();
-//			session.setAttribute(AuthInterceptor.SEESION_MEMBER, "admin");
-//			if (StringUtils.isNotBlank(redirectURL)) {
-//				return "redirect:" + URLDecoder.decode(redirectURL);
-//			}
-//
-//			return "redirect:/site/index";
-//		} else {
-//			if (StringUtils.isNotBlank(redirectURL)) {
-//				return "redirect:/site/login?" + URLDecoder.decode(redirectURL);
-//			}
-//			return "redirect:/site/login";
-//		}
-		
-		return "/site/login";
+		if (StringUtils.isNotBlank(loginForm.getPassword()) && StringUtils.isNotBlank(loginForm.getPassword())
+				&& loginForm.getPassword().equals("admin") && loginForm.getPassword().equals("admin")) {
+			// 当登陆成功是，将用户信息存放到session中去
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("USER", loginForm.getUsername());
+			if (StringUtils.isNotBlank(redirectURL)) {
+				return "redirect:" + URLDecoder.decode(redirectURL);
+			}
+
+			return "redirect:/site/index";
+		} else {
+			if (StringUtils.isNotBlank(redirectURL)) {
+				return "redirect:/site/login?" + URLDecoder.decode(redirectURL);
+			}
+			return "redirect:/site/login";
+		}
+
 	}
 	
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET })

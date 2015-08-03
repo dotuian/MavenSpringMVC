@@ -5,56 +5,38 @@ import javax.validation.constraints.Size;
 
 public class LoginForm {
 
-	@Size(min=3, max=20)
+	@Size(min = 3, max = 20)
 	@NotNull
-	private String j_username;
-	
+	private String username;
+
 	@NotNull
-	@Size(min=3, max=15)
-	private String j_password;
-	
-	private boolean _spring_security_remember_me = false;
+	@Size(min = 3, max = 15)
+	private String password;
 
-	/**
-	 * @return the j_username
-	 */
-	public String getJ_username() {
-		return j_username;
+	private boolean isRememberMe = false;
+
+	public String getUsername() {
+		return username;
 	}
 
-	/**
-	 * @param j_username the j_username to set
-	 */
-	public void setJ_username(String j_username) {
-		this.j_username = j_username;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	/**
-	 * @return the j_password
-	 */
-	public String getJ_password() {
-		return j_password;
+	public String getPassword() {
+		return password;
 	}
 
-	/**
-	 * @param j_password the j_password to set
-	 */
-	public void setJ_password(String j_password) {
-		this.j_password = j_password;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	/**
-	 * @return the _spring_security_remember_me
-	 */
-	public boolean is_spring_security_remember_me() {
-		return _spring_security_remember_me;
+	public boolean isRememberMe() {
+		return isRememberMe;
 	}
 
-	/**
-	 * @param _spring_security_remember_me the _spring_security_remember_me to set
-	 */
-	public void set_spring_security_remember_me(boolean _spring_security_remember_me) {
-		this._spring_security_remember_me = _spring_security_remember_me;
+	public void setRememberMe(boolean isRememberMe) {
+		this.isRememberMe = isRememberMe;
 	}
-	
+
 }

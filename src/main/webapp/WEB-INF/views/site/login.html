@@ -1,7 +1,5 @@
-<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-
 
 <title th:fragment="title">This is my content</title>
 
@@ -19,28 +17,27 @@
 	<div class="row">
 		<div class="col-md-6">
 		
-<!-- 			<form action="#" th:action="@{/site/login}" th:object="${loginForm}" method="post" class="form-horizontal"> -->
-			<form action="#" th:action="@{/j_spring_security_check}" th:object="${loginForm}" method="post" class="form-horizontal">
+			<form action="#" th:action="@{/site/login}" th:object="${loginForm}" method="post" class="form-horizontal">
 				<div class="form-group">
-					<label for="username" th:text="#{loginForm.j_username}" class="col-sm-2 control-label">username</label>
+					<label for="username" th:text="#{loginForm.username}" class="col-sm-2 control-label">username</label>
 					<div class="col-sm-10">
-						<input type="text" name="j_username" th:field="*{j_username}" class="form-control" th:errorclass="error" />
-						<div class="error" th:errors="${loginForm.j_username}"></div>
+						<input type="text" name="username" th:field="*{username}" class="form-control" th:errorclass="error" />
+						<div class="error" th:errors="${loginForm.username}"></div>
 					</div> 
 				</div>
 			
 				<div class="form-group">
-					<label for="password" th:text="#{loginForm.j_password}" class="col-sm-2 control-label">password</label>
+					<label for="password" th:text="#{loginForm.password}" class="col-sm-2 control-label">password</label>
 					<div class="col-sm-10">
-						<input type="password" name="j_password" th:field="*{j_password}" class="form-control" th:errorclass="error"/>
-						<div class="error" th:errors="${loginForm.j_password}"></div>
+						<input type="password" name="password" th:field="*{password}" class="form-control" th:errorclass="error"/>
+						<div class="error" th:errors="${loginForm.password}"></div>
 					</div> 
 				</div>
 			
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<input type="checkbox" th:field="*{_spring_security_remember_me}"/>
-						<label th:for="${#ids.prev('_spring_security_remember_me')}" th:text="#{loginForm._spring_security_remember_me}"></label>
+						<input type="checkbox" th:field="*{isRememberMe}"/>
+						<label th:for="${#ids.prev('isRememberMe')}" th:text="#{loginForm.isRememberMe}"></label>
 					</div>
 				</div>
 			  

@@ -139,6 +139,7 @@
 		</dependency>
 
 		<!-- Spring Security -->
+		<!-- 
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
@@ -154,6 +155,7 @@
 			<artifactId>spring-security-config</artifactId>
 			<version>${security.version}</version>
 		</dependency>
+		 -->
 
 
 
@@ -161,12 +163,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-				<version>3.2.1</version>
 		</dependency>
 
 		<dependency>
@@ -181,6 +177,11 @@
 			<version>2.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+				<version>3.2.1</version>
+		</dependency>
 
 		<dependency>
 			<groupId>junit</groupId>
