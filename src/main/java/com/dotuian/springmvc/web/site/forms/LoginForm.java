@@ -13,7 +13,7 @@ public class LoginForm {
 	@Size(min = 3, max = 15)
 	private String password;
 
-	private boolean isRememberMe = false;
+	private boolean rememberMe = false;
 
 	public String getUsername() {
 		return username;
@@ -32,11 +32,11 @@ public class LoginForm {
 	}
 
 	public boolean isRememberMe() {
-		return isRememberMe;
+		return rememberMe;
 	}
 
-	public void setRememberMe(boolean isRememberMe) {
-		this.isRememberMe = isRememberMe;
+	public void setRememberMe(boolean rememberMe) {
+		this.rememberMe = rememberMe;
 	}
 
 }

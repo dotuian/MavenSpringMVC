@@ -20,9 +20,12 @@ public class LoginFormValidator implements Validator {
 
 		LoginForm loginForm = (LoginForm) target;
 
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "NotEmpty.loginForm.username");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty.loginForm.password");
-
+		if(!("admin".equals(loginForm.getUsername()) && "admin".equals(loginForm.getPassword()))) {
+			ValidationUtils.rejectIfEmpty(errors, "password", "Password.Error");
+		}
+		
+		if(!errors.hasErrors()) {
+		}
 	}
 
 }

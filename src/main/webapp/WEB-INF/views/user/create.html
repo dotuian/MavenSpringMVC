@@ -15,8 +15,7 @@
 		<div class="col-md-6">
 		
 			<form action="#" th:action="@{/user/create}" th:object="${userForm}" method="post" class="form-horizontal">
-				
-				
+					
 				<div class="form-group" th:class="${#fields.hasErrors('email')} ? 'form-group has-error' : form-group">
 				
 					<label for="username" th:text="#{userForm.email}" class="col-sm-2 control-label">username</label>

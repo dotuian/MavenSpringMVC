@@ -9,8 +9,6 @@
 
 	<mvc:interceptors>
 	
-		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
-	
 		<!--  Thymeleaf template -->
 		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
 		

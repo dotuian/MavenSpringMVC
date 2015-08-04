@@ -31,6 +31,10 @@ import org.apache.log4j.Logger;
  * 3. Filter对象创建后会驻留在内存，当web应用移除或服务器停止时才销毁。在Web容器卸载 Filter 对象之前被调用。该方法在Filter的生命周期中仅执行一次。在这个方法中，可以释放过滤器使用的资源。
  *    public void destroy();//销毁
  * 
+ * 
+ * 当 Web 容器启动 Web 应用程序时，它会为您在部署描述符中声明的每一个过滤器创建一个实例。该过滤器执行的顺序是按它们在部署描述符中声明的顺序。
+ * web.xml 中的 filter-mapping 元素的顺序决定了 Web 容器应用过滤器到 Servlet 的顺序。
+ * 
  *
  */
 public class AuthorizationFilter implements Filter {
@@ -48,30 +52,37 @@ public class AuthorizationFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain)
 			throws IOException, ServletException {
-		logger.info("权限验证过滤器业务处理");
+		//logger.info("权限验证过滤器业务处理");
 		
-//		HttpServletRequest request = (HttpServletRequest)req;
-//		HttpServletResponse response = (HttpServletResponse)res;
-//
-//		String loginUrl = this.config.getInitParameter("login");
-//		logger.info("登录页面: " + loginUrl);
-//		
-//		String url = request.getRequestURI();
-//		logger.info("当前URL = " + url);
-//		
-//		if (url.endsWith(loginUrl) || url.toLowerCase().endsWith(".css") || url.toLowerCase().endsWith(".js")) {
-//			// 登录页面，CSS/JS 不过滤
-//			filterChain.doFilter(req, res);
-//			return;
-//		} else {
-//			
-//			Object user = request.getSession().getAttribute("USER");
-//			if (user == null) {
-//				// 跳转到登陆页面
-//				response.sendRedirect(request.getContextPath() + loginUrl);
-//				filterChain.doFilter(req, res);
-//			}
-//		}
+		HttpServletRequest request = (HttpServletRequest)req;
+		HttpServletResponse response = (HttpServletResponse)res;
+
+		//logger.info("当前URL = " + request.getRequestURL());
+		
+		// 不需要过滤的请求
+		String url = request.getRequestURI();
+		if(url.toLowerCase().endsWith(".css") || url.toLowerCase().endsWith(".js")
+				|| url.toLowerCase().endsWith(".woff2") || url.toLowerCase().endsWith(".woff") || url.toLowerCase().endsWith(".ttf")
+				) {
+			// 登录页面，CSS/JS 不过滤
+			filterChain.doFilter(req, res);
+			return;
+		}
+		
+		// 登录画面不进行过滤
+		String loginUrl = this.config.getInitParameter("login");
+		if (url.endsWith(loginUrl)) {
+			filterChain.doFilter(req, res);
+			return;
+		}
+		
+		
+		// 判断用户是否登录
+		Object user = request.getSession().getAttribute("USER");
+		if (user == null) {
+			// 跳转到登陆页面
+			response.sendRedirect(request.getContextPath() + loginUrl);
+		}
 		
 		filterChain.doFilter(req, res);
 	}
