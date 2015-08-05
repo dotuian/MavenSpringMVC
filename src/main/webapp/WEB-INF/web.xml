@@ -57,17 +57,17 @@
 	
 	<!-- 监听器 -->
 	<listener>
-		<listener-class>com.dotuian.springmvc.common.listeners.OnlineUserCountListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+		<listener-class>com.dotuian.springmvc.common.listeners.OnlineUserCountListener</listener-class>
 	</listener>
 	<listener>
 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
 	</listener>
 	
 	
-	<!-- Spring MVC Servlet定义 -->
+	<!-- Spring MVC Servlet分发器定义 -->
 	<servlet>
 		<servlet-name>dispatcher</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

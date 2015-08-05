@@ -1,4 +1,4 @@
-package com.dotuian.springmvc.common.interceptors;
+package com.dotuian.springmvc.common.annotations;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

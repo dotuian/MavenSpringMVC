@@ -26,6 +26,10 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+
+	<!-- 静态资源访问 -->  
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
 	
 	<!-- PDF试图解析器 -->
 	<!-- ResourceBundleViewResolver: to resolve view names specified in the views.properties file  -->
@@ -63,7 +67,6 @@
 		</property>
 	</bean>
 
-
 	<!-- 视图解析器(a JSP+JSTL ViewResolver in a Spring MVC application)  -->
 	<!-- 
 	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -76,9 +79,7 @@
 	 -->
 
 
-	<!-- 静态资源访问 -->  
-	<mvc:resources mapping="/resources/**" location="/resources/" />
-	
+	<!--  -->	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages" />
 		<property name="defaultEncoding" value="UTF-8"/>

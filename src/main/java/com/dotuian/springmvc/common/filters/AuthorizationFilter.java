@@ -1,6 +1,7 @@
 package com.dotuian.springmvc.common.filters;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -80,8 +81,14 @@ public class AuthorizationFilter implements Filter {
 		// 判断用户是否登录
 		Object user = request.getSession().getAttribute("USER");
 		if (user == null) {
+			//response.sendRedirect(request.getContextPath() + loginUrl);
 			// 跳转到登陆页面
-			response.sendRedirect(request.getContextPath() + loginUrl);
+			String redirectURL = request.getServletPath().toString();
+			if("/site/login".equals(redirectURL) || "/site/logout".equals(redirectURL)) {
+				response.sendRedirect(request.getContextPath() + loginUrl);
+			} else {
+				response.sendRedirect(request.getContextPath() + loginUrl + "?redirectURL=" + URLEncoder.encode(redirectURL));
+			}
 		}
 		
 		filterChain.doFilter(req, res);

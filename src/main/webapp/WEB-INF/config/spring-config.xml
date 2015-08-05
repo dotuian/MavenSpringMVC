@@ -8,7 +8,10 @@
 	<mvc:annotation-driven />
 
 	<mvc:interceptors>
-	
+		
+		<!--  请求相应时间拦截器 -->
+		<bean class="com.dotuian.springmvc.common.interceptors.ResponseTimeInterceptor" />
+		
 		<!--  Thymeleaf template -->
 		<bean class="com.dotuian.springmvc.common.interceptors.ThymeleafLayoutInterceptor" />
 		

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dotuian.springmvc.common.interceptors.AuthPassport;
+import com.dotuian.springmvc.common.annotations.AuthPassport;
 import com.dotuian.springmvc.service.SampleService;
 import com.dotuian.springmvc.web.base.controllers.BaseController;
 import com.dotuian.springmvc.web.user.forms.User;

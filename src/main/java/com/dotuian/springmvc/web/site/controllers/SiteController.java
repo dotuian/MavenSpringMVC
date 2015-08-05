@@ -7,10 +7,12 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.dotuian.springmvc.common.annotations.Layout;
@@ -64,7 +66,13 @@ public class SiteController extends BaseController {
 	public ModelAndView login(HttpServletRequest request, String redirectURL) {
 		ModelAndView model = new ModelAndView();
 		model.setViewName("/site/login");
-		model.addObject("redirectURL", redirectURL);
+		
+		String actionUrl = "/site/login";
+		if(!StringUtils.isEmpty(redirectURL)) {
+			actionUrl += "?redirectURL=" + redirectURL;
+		}
+		
+		model.addObject("actionUrl", actionUrl);
 
 		return model;
 	}
@@ -78,7 +86,8 @@ public class SiteController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/login", method = { RequestMethod.POST })
-	public String doLogin(@ModelAttribute("loginForm") @Valid LoginForm loginForm, BindingResult result, HttpServletRequest request) {
+	public String doLogin(@ModelAttribute("loginForm") @Valid LoginForm loginForm, BindingResult result,
+			HttpServletRequest request, @RequestParam(value = "redirectURL", required=false) String redirectURL) {
 		
 		validator.validate(loginForm, result);
 		
@@ -93,7 +102,7 @@ public class SiteController extends BaseController {
 			session.setAttribute(CONSTANT_USER, loginForm.getUsername());
 			
 			// 跳转到index页面
-			return "redirect:/site/index";
+			return StringUtils.isEmpty(redirectURL) ? "redirect:/site/index" : "redirect:" + redirectURL;
 		}
 
 		return "site/login";

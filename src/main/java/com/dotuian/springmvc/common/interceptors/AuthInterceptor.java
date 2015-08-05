@@ -13,6 +13,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import com.dotuian.springmvc.common.annotations.AuthPassport;
+
 
 /**
  * HandlerInterceptor是Spring MVC为我们提供的拦截器接口，来让我们实现自己的处理逻辑 
@@ -36,7 +38,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	 */
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
-		logger.info("=== preHandle === ");
 		logger.info("Request URL::" + request.getRequestURL().toString() + ":: Start Time=" + System.currentTimeMillis());
 		
 		AuthPassport authPassport = ((HandlerMethod) handler).getMethodAnnotation(AuthPassport.class);
@@ -55,7 +56,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		// 这里可以根据session的用户来判断角色的权限，根据权限来重定向不同的页面，简单起见，这里只是做了一个重定向
 		if (StringUtils.isEmpty(user)) {
 			// 被拦截，重定向到login界面
-			response.sendRedirect(contextPath + "/sample/login?redirectURL=" + URLEncoder.encode(url));
+			response.sendRedirect(contextPath + "/site/login?redirectURL=" + URLEncoder.encode(url));
 			return false;
 		}
 		
