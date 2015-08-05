@@ -281,8 +281,17 @@
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+		
+		<!-- iText PDF文件生成 -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>4.2.2</version>
+		</dependency>
 
-
+	
+	
+	
  		<dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -300,7 +309,10 @@
             <version>${org.slf4j-version}</version>
             <scope>runtime</scope>
         </dependency>
-	
+		
+		
+		
+		
 	
 	</dependencies>
 

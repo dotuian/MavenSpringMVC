@@ -1,19 +1,12 @@
 package com.dotuian.springmvc.web.sample.controllers;
 
-import java.net.URLDecoder;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,14 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.dotuian.springmvc.common.interceptors.AuthInterceptor;
 import com.dotuian.springmvc.common.interceptors.AuthPassport;
 import com.dotuian.springmvc.service.SampleService;
-import com.dotuian.springmvc.service.dto.XmlUser;
-import com.dotuian.springmvc.service.dto.XmlUserList;
 import com.dotuian.springmvc.web.base.controllers.BaseController;
-import com.dotuian.springmvc.web.site.forms.LoginForm;
-import com.dotuian.springmvc.web.site.validators.LoginFormValidator;
 import com.dotuian.springmvc.web.user.forms.User;
 
 
@@ -234,56 +222,37 @@ public class SampleController extends BaseController {
 	}
 	
 	
-	// 返回Json字符串
-	// =============== JSON ===============
-	/**
-	 * http://127.0.0.1:8080/springmvc/sample/json/user/1.json
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping(value = "/json/user/{id}.json", method = RequestMethod.GET)
-	@ResponseBody
-	public User getUser(@PathVariable int id) {
-		User user = sampleService.getUserById(id);
-		return user;
+	
+	
+	
+	
+	//==============================================================================
+	// 
+	//==============================================================================
+	
+	//PDF文件生成示例
+	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
+	public ModelAndView pdf() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/sample/pdf");
+		return mv;
 	}
 
-	/**
-	 * http://127.0.0.1:8080/springmvc/sample/json/users.json
-	 * @return
-	 */
-	@RequestMapping(value = "/json/users.json", method = RequestMethod.GET)
-	@ResponseBody
-	public List<User> getAllUsers() {
-		List<User> users = sampleService.getAllUsers();
-		return users;
+	//XML文件生成示例
+	@RequestMapping(value = "/xml", method = RequestMethod.GET)
+	public ModelAndView xml() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/sample/xml");
+		return mv;
 	}
 	
-	// 返回XML字符串
-	// =============== XML ===============
-	/**
-	 * http://127.0.0.1:8080/springmvc/sample/xml/user/{id}.xml
-	 * @param id
-	 * @return
-	 */
-	@RequestMapping(value = "/xml/user/{id}.xml", method = RequestMethod.GET)
-	@ResponseBody
-	public XmlUser getXmlUser(@PathVariable int id) {
-		XmlUser user = sampleService.getXmlUserById(id);
-		return user;
+	//JSON文件生成示例
+	@RequestMapping(value = "/json", method = RequestMethod.GET)
+	public ModelAndView json() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/sample/json");
+		return mv;
 	}
 	
-	/**
-	 * 
-	 * http://127.0.0.1:8080/springmvc/sample/xml/users.xml
-	 * @return
-	 */
-	@AuthPassport
-	@RequestMapping(value = "/xml/users.xml", method = RequestMethod.GET)
-	@ResponseBody
-	public XmlUserList getAllXmlUsers() {
-		List<XmlUser> users = sampleService.getAllXmlUsers();
-		return new XmlUserList(users);
-	}
 	
 }

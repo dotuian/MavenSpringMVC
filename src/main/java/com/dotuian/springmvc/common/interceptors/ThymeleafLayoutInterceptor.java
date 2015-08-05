@@ -54,9 +54,14 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
         modelAndView.setViewName(layoutName);
         modelAndView.addObject(this.viewAttributeName, originalViewName);
     }
-
+    
+    /**
+     * 不通过Thymeleaf渲染的请求
+     * @param viewName
+     * @return
+     */
     private boolean isRedirectOrForward(String viewName) {
-        return viewName.startsWith("redirect:") || viewName.startsWith("forward:");
+        return viewName.startsWith("redirect:") || viewName.startsWith("forward:") || "pdfView".equals(viewName);
     }
 
     private String getLayoutName(Object handler) {

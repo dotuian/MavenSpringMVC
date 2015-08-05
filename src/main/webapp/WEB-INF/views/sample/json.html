@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title th:fragment="title">This is my content</title>
+
+</head>
+
+<body>
+
+<div class="main" th:fragment="content">
+
+	<h2>JSON下载</h2>
+	<p>这是一个返回JSON字符串的示例程序。</p>
+	
+	<div class="row">
+		<div class="col-md-6">
+			
+			<p>PDF文件下载: <a th:href="@{/json/users.json}" target="_blank">点击下载</a></p>
+
+		</div>
+	</div>
+
+</div>
+
+
+</body>
+</html>
