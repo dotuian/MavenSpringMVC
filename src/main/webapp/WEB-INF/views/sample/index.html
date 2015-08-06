@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title th:fragment="title">This is my content</title>
+
+</head>
+
+<body>
+
+	<div class="main" th:fragment="content">
+
+		<div class="jumbotron">
+			<div class="container">
+				示范代码
+			</div>
+		</div>
+
+		<div class="container">
+
+			<div class="row">
+				<div class="col-md-4">
+					<h2>XML/JSON</h2>
+					<p>
+						XML(多个节点): <a th:href="@{/xml/users.xml}" target="_blank">点击下载</a>
+					</p>
+					<p>
+						XML(单一节点): <a th:href="@{/xml/user/1.xml}" target="_blank">点击下载</a>
+					</p>
+					<p>
+						JSON字符串: <a th:href="@{/json/users.json}" target="_blank">点击下载</a>
+					</p>
+				</div>
+				
+				<div class="col-md-4">
+					<h2>文件下载</h2>
+
+					<p>
+						Excel文件下载: <a th:href="@{/excel/listbooks.xlsx}" target="_blank">点击下载</a>
+					</p>
+					<p>
+						PDF文件下载: <a th:href="@{/pdf/listbooks.pdf}" target="_blank">点击下载</a>
+					</p>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+
+
+
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</body>
+</html>

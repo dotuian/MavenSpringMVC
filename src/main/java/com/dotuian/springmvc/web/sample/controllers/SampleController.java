@@ -230,29 +230,40 @@ public class SampleController extends BaseController {
 	// 
 	//==============================================================================
 	
-	//PDF文件生成示例
-	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
-	public ModelAndView pdf() {
+	// 示例代码
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/sample/pdf");
-		return mv;
-	}
-
-	//XML文件生成示例
-	@RequestMapping(value = "/xml", method = RequestMethod.GET)
-	public ModelAndView xml() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/sample/xml");
+		mv.setViewName("/sample/index");
 		return mv;
 	}
 	
-	//JSON文件生成示例
-	@RequestMapping(value = "/json", method = RequestMethod.GET)
-	public ModelAndView json() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/sample/json");
-		return mv;
-	}
+	
+	
+	
+//	//PDF文件生成示例
+//	@RequestMapping(value = "/pdf", method = RequestMethod.GET)
+//	public ModelAndView pdf() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("/sample/pdf");
+//		return mv;
+//	}
+//
+//	//XML文件生成示例
+//	@RequestMapping(value = "/xml", method = RequestMethod.GET)
+//	public ModelAndView xml() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("/sample/xml");
+//		return mv;
+//	}
+//	
+//	//JSON文件生成示例
+//	@RequestMapping(value = "/json", method = RequestMethod.GET)
+//	public ModelAndView json() {
+//		ModelAndView mv = new ModelAndView();
+//		mv.setViewName("/sample/json");
+//		return mv;
+//	}
 	
 	
 }

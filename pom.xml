@@ -297,8 +297,21 @@
 			<artifactId>itext</artifactId>
 			<version>4.2.2</version>
 		</dependency>
-
 	
+		<!-- Excel文件的读写 -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.12</version>
+		</dependency>
+
+<!-- 		<dependency> -->
+<!-- 			<groupId>net.sourceforge.jexcelapi</groupId> -->
+<!-- 			<artifactId>jxl</artifactId> -->
+<!-- 			<version>2.6.12</version> -->
+<!-- 		</dependency> -->
+
+
 	
 	
  		<dependency>

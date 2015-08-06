@@ -61,7 +61,10 @@ public class ThymeleafLayoutInterceptor extends HandlerInterceptorAdapter {
      * @return
      */
     private boolean isRedirectOrForward(String viewName) {
-        return viewName.startsWith("redirect:") || viewName.startsWith("forward:") || "pdfView".equals(viewName);
+    	// 通过"redirect:"前缀来重定向（redirect） 一个URL
+    	// 通过" forward:"前缀来转发（forward） 一个URL
+    	
+        return viewName.startsWith("redirect:") || viewName.startsWith("forward:") || "pdfView".equals(viewName) || "excelView".equals(viewName);
     }
 
     private String getLayoutName(Object handler) {
