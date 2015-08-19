@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+ http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	
+	<!-- 
+		切入点名称	XML元素名称	触发时刻
+		flow start	on-start	flow 执行之前
+		state entry	on-entry	进入某个 state 之后，做其他事情之前
+		view render	on-render	在进入 view 的 render 流程之后，在 view 真正 render出来之前
+		state exit	on-exit     在退出 state 之前
+		flow end	on-end	    flow 执行结束之后
+	 -->
+
+
+	<!-- view-state中的view对应jsp文件夹中的jsp页面，on是触发事件，to对应state id -->
+	<view-state id="viewCart" view="viewCart">
+		<transition on="submit" to="viewOrder">
+		</transition>
+	</view-state>
+	
+	<view-state id="viewOrder" view="viewOrder">
+		<transition on="confirm" to="orderConfirmed">
+		</transition>
+	</view-state>
+	
+	<view-state id="orderConfirmed" view="orderConfirmed">
+		<transition on="returnToIndex" to="returnToIndex">
+		</transition>
+	</view-state>
+	
+	<end-state id="returnToIndex" view="externalRedirect:servletRelative:/index.jsp">
+	</end-state>
+
+</flow>

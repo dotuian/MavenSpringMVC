@@ -5,10 +5,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<mvc:annotation-driven />
-
+	<!-- 拦截器 -->
 	<mvc:interceptors>
-		
 		<!--  请求相应时间拦截器 -->
 		<bean class="com.dotuian.springmvc.common.interceptors.ResponseTimeInterceptor" />
 		
@@ -19,8 +17,6 @@
 			<mvc:mapping path="/sample/**" />
 			<bean class="com.dotuian.springmvc.common.interceptors.AuthInterceptor" />
 		</mvc:interceptor>
-		
-		
 	</mvc:interceptors>
 
 

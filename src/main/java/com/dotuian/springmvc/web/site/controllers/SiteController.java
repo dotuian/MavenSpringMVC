@@ -123,4 +123,28 @@ public class SiteController extends BaseController {
 		return "site/login";
 	}
 	
+	
+	
+	// =============================================================================
+	// 错误页面的URL处理 
+	// =============================================================================
+	@RequestMapping(value = "/error404", method = { RequestMethod.GET })
+	public String error404(HttpServletRequest request, HttpServletResponse response) {
+		return "errors/404";
+	}
+	
+	@RequestMapping(value = "/error500", method = { RequestMethod.GET })
+	public String error500(HttpServletRequest request, HttpServletResponse response) {
+		return "errors/500";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

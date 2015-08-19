@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:webflow="http://www.springframework.org/schema/webflow-config"
+    xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd 
+    http://www.springframework.org/schema/webflow-config 
+    http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.xsd">
+ 
+ 
+ <!--
+Spring Web Flow	任何比较复杂的、有状态的、需要在多个页面之间跳转的业务过程
+
+Spring Web Flow 2.0 中提供了以下两种范围
+1. flow 范围。此范围内的对象在 flow 开始时创建， flow 结束时销毁，在 flow 定义文件中可通过“ flowScope ”变量名来访问。
+2. conversation 范围。此范围内的对象与 flow 范围对象基本相似，唯一不同在于 conversation 范围内的对象所在的 flow 如果调用了其他 subflow ，
+那么在 subflow 中也可访问该对象。（也就是说：subflow中能够访问conversation中的对象）
+
+subflow 定义：被其他 flow 所调用的 flow 即可称为 subflow。
+
+
+FlowRegistry : 存放 flow 的仓库，每个定义 flow 的 XML 文档被解析后，都会被分配一个唯一的 id ，并以 FlowDefinition 对象的形式存放在 FlowResigtry 中
+FlowExecutor :是 Spring Web Flow 的一个核心接口，启动某个 flow ，都要通过这个接口来进行。
+
+为了让客户端的请求变成执行某个 flow 的请求，要解决以下几个问题：
+1.需要在某个 HandlerMapping 中配置负责处理 flow 请求的 handler （或 controller ）
+2.该handler （或 controller ）要负责启动指定的 flow
+3.flow 执行过程中以及执行完成后所涉及的视图应呈现给客户端
+
+
+接收执行 flow 的请求，然后根据请求来启动相应 flow的handler （处理器）, Spring 提供了2中方案：
+1、自己编写实现了 FlowHandler 接口的类，让这个类来实现这个功能。
+2、使用一个现成的叫做 FlowController 的控制器
+
+ -->
+
+
+	<webflow:flow-executor id="flowExecutor" />
+	
+	<!-- 所有 flow的定义文件它的位置在这里进行配置， flow-builder-services 用于配置 flow 的特性 -->
+	<webflow:flow-registry id="flowRegistry" flow-builder-services="flowBuilderServices">
+		<webflow:flow-location path="/WEB-INF/flows/shopping.xml" id="shopping" />
+		<webflow:flow-location path="/WEB-INF/flows/addToCart.xml" id="addToCart" />
+	</webflow:flow-registry>
+	
+	<!--Web Flow 中的视图通过 MVC 框架的视图技术来呈现 -->
+	<webflow:flow-builder-services id="flowBuilderServices" view-factory-creator="mvcViewFactoryCreator" />
+	
+	<!-- 指明 MVC 框架的 view resolver ，用于通过 view 名查找资源 -->
+	<bean id="mvcViewFactoryCreator"
+		class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+		<property name="viewResolvers" ref="viewResolver" />
+	</bean>
+ 
+ 
+ 
+ 
+ 
+ 
+</beans>
+
+

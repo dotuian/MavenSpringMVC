@@ -46,6 +46,7 @@
 	<bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">  
         <property name="prefix" value="/WEB-INF/views/" />
         <property name="suffix" value=".html" />
+        
         <property name="templateMode" value="HTML5" />  
         <property name="cacheable" value="false" />
         <!-- 模板文件编码 -->
@@ -61,15 +62,10 @@
 		<!-- 属性文件编码 -->
 		<property name="characterEncoding" value="UTF-8" />
 		<property name="order" value="2" />
+<!-- 		<property name="viewNames" value="thymeleaf/*" /> -->
 	</bean>
 	
-	<bean name="main" class="org.thymeleaf.spring4.view.ThymeleafView">
-		<property name="staticVariables">
-			<map>
-				<entry key="footer" value="Some company: &lt;b&gt;ACME&lt;/b&gt;" />
-			</map>
-		</property>
-	</bean>
+
 
 	<!-- ===============================================================  -->
 	<!-- ===============================================================  -->
@@ -81,6 +77,7 @@
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
+		<property name="viewNames" value="jsp/*" />
 		<property name="order" value="3" />
 	</bean>
 
@@ -98,9 +95,51 @@
 	    <property name="defaultEncoding" value="UTF-8" />
 	</bean>
 	 -->
-	
+
 	
 	<!-- 自定义实现接口HandlerExceptionResolver的异常处理 -->
-	<bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/> 
+	<bean id="exceptionHandler" class="com.dotuian.springmvc.common.exception.MyExceptionHandler"/>
+
+
+
+
+
+
+
+
+
+
+	<bean id="flowController" class="org.springframework.webflow.mvc.servlet.FlowController">
+		<property name="flowExecutor" ref="flowExecutor" />
+	</bean>
+
+	<bean id="viewMappings"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<!-- /shopping.do 请求由 flowController 来处理 -->
+		<property name="mappings">
+			<value> /shopping.do=flowController </value>
+		</property>
+
+		<property name="defaultHandler">
+			<!-- UrlFilenameViewController 会将 "/index" 这样的请求映射成名为 "index" 的视图 -->
+			<bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 </beans>

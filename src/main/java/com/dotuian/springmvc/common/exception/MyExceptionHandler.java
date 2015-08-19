@@ -56,6 +56,7 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
 		mv.addObject("url", request.getRequestURL());
 		
         // 根据异常的种类不同，跳转到不同的页面  
+		// 跳转到 WEB-INF/views/errors/ 下对应的文件
 		if (exception instanceof NullPointerException) {
 			mv.setViewName("/errors/exception");
 		} else if (exception instanceof ParameterException) {
